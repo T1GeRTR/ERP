@@ -4,19 +4,24 @@ CREATE DATABASE `erp`;
 
 USE `erp`;
 
-CREATE TABLE `departament` (
+CREATE TABLE `department` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(50) NOT NULL,
-    `head` int(11) NOT NULL,
+    `deleted` boolean NOT NULL DEFAULT FALSE,
     PRIMARY KEY (id),
-    KEY name (name)
+    KEY name (name),
+    KEY deleted (deleted)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `position` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(50) NOT NULL,
+    `departmentId` int(11) NOT NULL,
+    `deleted` boolean NOT NULL DEFAULT FALSE,
     PRIMARY KEY (id),
-    KEY name (name)
+    KEY name (name),
+    FOREIGN KEY (departmentId) REFERENCES department (id) ON DELETE CASCADE,
+    KEY deleted (deleted)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `user` (
@@ -28,9 +33,10 @@ CREATE TABLE `user` (
     `patronymic` varchar(50),
     `number` varchar(50),
     `birthDay` DATE,
-    `departamentId` int(11),
+    `departmentId` int(11),
     `positionId` int(11),
     `userType` ENUM('EMPLOYEE', 'ADMIN', 'HEAD', 'DIRECTOR') NOT NULL,
+    `deleted` boolean NOT NULL DEFAULT FALSE,
     PRIMARY KEY (id),
     UNIQUE KEY login (login),
     KEY password (password),
@@ -39,11 +45,10 @@ CREATE TABLE `user` (
     KEY patronymic (patronymic),
     KEY number (number),
     KEY birthDay (birthDay),
-	FOREIGN KEY (departamentId) REFERENCES departament (id) ON DELETE CASCADE,
-	FOREIGN KEY (positionId) REFERENCES position (id) ON DELETE CASCADE
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-ALTER TABLE departament ADD CONSTRAINT fk_head FOREIGN KEY (head) REFERENCES user (id);
+	FOREIGN KEY (departmentId) REFERENCES department (id) ON DELETE CASCADE,
+	FOREIGN KEY (positionId) REFERENCES position (id) ON DELETE CASCADE,
+    KEY deleted (deleted)
+    ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `session` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -53,3 +58,7 @@ CREATE TABLE `session` (
     UNIQUE KEY sessionId (sessionId),
     FOREIGN KEY (userId) REFERENCES `user` (id) ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+INSERT INTO `department`(name) VALUES('ОПИСИ');
+
+INSERT INTO `position`(name, departmentId) VALUES('Инженер АСУТП 2 категории', 1);
