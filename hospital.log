@@ -1267,3 +1267,12 @@ com.mtv.erp.mybatis.mappers.PositionMapper.getById 2021.03.09 17:49:36.877 DEBUG
 com.mtv.erp.mybatis.mappers.PositionMapper.getById 2021.03.09 17:49:36.877 DEBUG [main] c.m.e.m.m.P.getById: ====> Parameters: 1(Integer)
 com.mtv.erp.mybatis.mappers.PositionMapper.getById 2021.03.09 17:49:36.878 DEBUG [main] c.m.e.m.m.P.getById: <====      Total: 1
 com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.09 17:49:36.878 DEBUG [main] c.m.e.m.m.U.getById: <==      Total: 1
+org.springframework.web.client.RestTemplate 2021.03.15 18:39:52.433 DEBUG [main] o.s.w.c.RestTemplate: HTTP POST https://apiru.planfix.ru/xml
+org.springframework.web.client.RestTemplate 2021.03.15 18:39:52.685 DEBUG [main] o.s.w.c.RestTemplate: Accept=[application/json, application/*+json]
+org.springframework.web.client.RestTemplate 2021.03.15 18:43:48.102 DEBUG [main] o.s.w.c.RestTemplate: HTTP POST https://apiru.planfix.ru/xml
+org.springframework.web.client.RestTemplate 2021.03.15 18:43:48.358 DEBUG [main] o.s.w.c.RestTemplate: Accept=[*/*]
+org.springframework.web.client.RestTemplate 2021.03.15 18:43:48.414 DEBUG [main] o.s.w.c.RestTemplate: Writing [com.mtv.erp.requestPlanFix.PfDtoRequest@34997338] as "application/xml"
+org.springframework.web.client.RestTemplate 2021.03.15 18:43:50.439 DEBUG [main] o.s.w.c.RestTemplate: Response 200 OK
+org.springframework.web.client.RestTemplate 2021.03.15 18:43:50.457 DEBUG [main] o.s.w.c.RestTemplate: Reading to [com.mtv.erp.responsePlanFix.WorkerPfDtoResponse]
+org.springframework.web.client.RestTemplate 2021.03.15 18:58:25.823 DEBUG [main] o.s.w.c.RestTemplate: HTTP POST https://apiru.planfix.ru/xml
+org.springframework.web.client.RestTemplate 2021.03.15 18:58:25.965 DEBUG [main] o.s.w.c.RestTemplate: Accept=[application/json, application/*+json]

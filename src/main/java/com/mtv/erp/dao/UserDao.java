@@ -8,17 +8,21 @@ import java.util.List;
 public interface UserDao {
     User insert (User user) throws ServerException;
 
-    boolean delete (int id);
+    boolean delete (int id) throws ServerException;
 
-    boolean update (User user);
+    boolean update (User user) throws ServerException;
 
     User getById (int id);
 
-    List<User> getAll ();
+    List<User> getAll () throws ServerException;
 
-    List<User> getByDepartamentId(int id);
+    List<User> insertAll(List<User> users) throws ServerException;
 
-    List<User> getByPositionId(int id);
+    //List<User> getByDepartamentId(int id);
 
-    User getHeadByDepartamentId(int id);
+    //List<User> getByPositionId(int id);
+
+    //User getHeadByDepartamentId(int id);
+
+
 }

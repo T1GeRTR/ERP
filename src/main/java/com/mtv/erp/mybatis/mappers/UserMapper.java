@@ -6,9 +6,11 @@ import com.mtv.erp.model.User;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
+import java.util.List;
+
 public interface UserMapper {
 
-    @Insert({"INSERT INTO user (login, password, firstname, lastname, patronymic, number, birthDay, departmentId, positionId, userType) VALUES (#{user.login}, #{user.password}, #{user.firstname}, #{user.lastname}, #{user.patronymic}, #{user.number}, #{user.birthDay}, #{user.department.id}, #{user.position.id}, #{user.userType})"})
+    @Insert({"INSERT INTO user (idPf, login, firstname, lastname, patronymic) VALUES (#{user.idPf}, #{user.login}, #{user.firstname}, #{user.lastname}, #{user.patronymic})"})
     @Options(useGeneratedKeys = true, keyProperty = "user.id")
     void insert(@Param("user") User user);
 
@@ -20,6 +22,26 @@ public interface UserMapper {
                     one = @One(select = "com.mtv.erp.mybatis.mappers.PositionMapper.getById", fetchType = FetchType.EAGER))
     })
     User getById(@Param("id") int id);
+
+
+    @Update({"UPDATE user SET login = #{user.login}, firstname = #{user.firstname}, lastname = #{user.lastname}, patronymic = #{user.patronymic} WHERE id = #{user.id}"})
+    boolean update(@Param("user") User user);
+
+    @Delete("DELETE FROM user WHERE id = #{id}")
+    Integer delete(@Param("id") Integer userId);
+
+    @Insert({"<script>",
+            "INSERT INTO worker (idPf, login, firstname, lastname, patronymic) VALUES",
+            "<foreach item='user' collection= 'list' separator=', '>",
+            "(#{user.idPf}, #{user.login}, #{user.firstname}, #{user.lastname}, #{user.patronymic})",
+            "</foreach>",
+            "</script>"})
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    List<User> insertAll(@Param("list") List<User> list);
+
+    @Select({"SELECT * FROM user"})
+    List<User> getAll();
+
 //    @Delete({"DELETE FROM session WHERE sessionId = #{sessionId}"})
 //    Integer logout(@Param("sessionId") String sessionId);
 //
