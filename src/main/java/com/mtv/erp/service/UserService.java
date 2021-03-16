@@ -2,25 +2,19 @@ package com.mtv.erp.service;
 
 import com.mtv.erp.dao.UserDao;
 import com.mtv.erp.exception.ServerException;
-import com.mtv.erp.model.User;
+import com.mtv.erp.model.User1;
 import com.mtv.erp.mybatis.daoimpl.UserDaoImpl;
 import com.mtv.erp.requestPlanFix.PfDtoRequest;
 import com.mtv.erp.responsePlanFix.WorkerPfDtoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class UserService {
@@ -45,9 +39,9 @@ public class UserService {
         httpHeaders.setContentType(MediaType.APPLICATION_XML);
         HttpEntity<PfDtoRequest> request = new HttpEntity<>(pfRequest, httpHeaders);
         //List<User> usersFromPf = Objects.requireNonNull(restTemplate.exchange(url, HttpMethod.POST, request, WorkerPfDtoResponse.class).getBody()).getUsers().getUsers();
-        List<User> usersFromPf = restTemplate.postForEntity(url, request, WorkerPfDtoResponse.class).getBody().getUsers().getUsers();
-        List<User> users = userDao.getAll();
-        List<User> usersUpdate = new ArrayList<>();
+        List<User1> usersFromPf = restTemplate.postForEntity(url, request, WorkerPfDtoResponse.class).getBody().getUsers().getUsers();
+        List<User1> users = userDao.getAll();
+        List<User1> usersUpdate = new ArrayList<>();
         List<Integer> usersIdDelete = new ArrayList<>();
         for (int i = 0; i<users.size(); i++) {
             for (int j = 0; j < usersFromPf.size(); j++) {
@@ -63,11 +57,11 @@ public class UserService {
                 }
             }
         }
-        for (User user : usersFromPf) {
+        for (User1 user : usersFromPf) {
             usersIdDelete.add(user.getId());
         }
         userDao.insertAll(users);
-        for (User user : usersUpdate) {
+        for (User1 user : usersUpdate) {
             userDao.update(user);
         }
         for (Integer userId : usersIdDelete) {

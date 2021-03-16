@@ -1,47 +1,54 @@
 package com.mtv.erp.dao;
 
-import com.mtv.erp.exception.ServerException;
-import com.mtv.erp.model.Department;
-import com.mtv.erp.model.Position;
-import com.mtv.erp.model.User;
-import com.mtv.erp.model.UserType;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.mtv.erp.TestPlanfix.Response;
 import com.mtv.erp.mybatis.daoimpl.UserDaoImpl;
 import com.mtv.erp.requestPlanFix.PfDtoRequest;
-import com.mtv.erp.responsePlanFix.WorkerPfDtoResponse;
-import com.sun.jersey.api.client.WebResource;
-import org.junit.jupiter.api.Assertions;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
-import com.sun.jersey.api.client.Client;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
-import java.time.LocalDate;
+import java.io.IOException;
+import java.util.Objects;
 
 public class TestUserDao {
     private final UserDao userDao = new UserDaoImpl();
 
-    @Test
-    public void testInsert() throws ServerException {
-        User user = userDao.insert(new User("mikhail", "Михаил", "Баранцев", "Сергеевич"));
-        Assertions.assertNotEquals(0, user.getId());
-    }
+//    @Test
+//    public void testInsert() throws ServerException {
+//        User user = userDao.insert(new User("mikhail", "Михаил", "Баранцев", "Сергеевич"));
+//        Assertions.assertNotEquals(0, user.getId());
+//    }
 
     @Test
-    public void XmlTest(){
-        Client client = Client.create();
-        WebResource resource = client.resource("https://apiru.planfix.ru/xml");
+    public void XmlTest() throws JSONException, IOException {
+        RestTemplate restTemplate = new RestTemplate();
+        String body = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<request method=\"user.getList\">\n" +
+                "  <account>Aseng</account>\n" +
+                "  <status>ACTIVE</status>\n" +
+                "  <pageCurrent>1</pageCurrent>\n" +
+                "  <pageSize>100</pageSize>\n" +
+                "</request>";
         PfDtoRequest pfRequest = new PfDtoRequest("user.getList");
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Authorization", "Basic YTU3YmYxZTg5ZmZlZDY1ZmJhYzRkZmZkNmE2Nzg4OWM6YTUyZDk2ZDE0MTI3OGEzZTI5ZTgyZmVhMTUwZWRlMzY=");
         httpHeaders.setContentType(MediaType.APPLICATION_XML);
-        HttpEntity<PfDtoRequest> request = new HttpEntity<>(pfRequest, httpHeaders);
-        WebResource.Builder builder = resource.accept(String.valueOf(MediaType.APPLICATION_XML));
-        builder.header("Content-Type", "application/xml");
-        builder.header("Accept", "application/xml");
-        builder.header("Authorization", "Basic YTU3YmYxZTg5ZmZlZDY1ZmJhYzRkZmZkNmE2Nzg4OWM6YTUyZDk2ZDE0MTI3OGEzZTI5ZTgyZmVhMTUwZWRlMzY=");
-        builder.accept(String.valueOf(MediaType.APPLICATION_XML));
-        WorkerPfDtoResponse response = builder.post(WorkerPfDtoResponse.class, request);
-        System.out.println(response.getStatus());
+        HttpEntity<String> request = new HttpEntity<>(body, httpHeaders);
+        ResponseEntity<String> response = restTemplate.postForEntity("https://apiru.planfix.ru/xml", request, String.class);
+        System.out.println(response.getBody());
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.readValue(response.getBody(), Response.class);
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        String value = objectMapper.writeValueAsString(jsonNode);
+//        System.out.println(value);
     }
 }

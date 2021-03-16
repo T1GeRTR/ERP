@@ -2,14 +2,14 @@ package com.mtv.erp.model;
 
 import java.util.Objects;
 
-public class User {
+public class User1 {
     private int id;
     private String login;
     private String firstname;
     private String lastname;
     private String patronymic;
 
-    public User(int id, String login, String firstname, String lastname, String patronymic) {
+    public User1(int id, String login, String firstname, String lastname, String patronymic) {
         this.id = id;
         this.login = login;
         this.firstname = firstname;
@@ -17,7 +17,7 @@ public class User {
         this.patronymic = patronymic;
     }
 
-    public User(String login, String firstname, String lastname, String patronymic) {
+    public User1(String login, String firstname, String lastname, String patronymic) {
         this(0, login, firstname, lastname, patronymic);
     }
 
@@ -65,8 +65,8 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
+        if (!(o instanceof User1)) return false;
+        User1 user = (User1) o;
         return getId() == user.getId() && Objects.equals(getLogin(), user.getLogin()) && Objects.equals(getFirstname(), user.getFirstname()) && Objects.equals(getLastname(), user.getLastname()) && Objects.equals(getPatronymic(), user.getPatronymic());
     }
 

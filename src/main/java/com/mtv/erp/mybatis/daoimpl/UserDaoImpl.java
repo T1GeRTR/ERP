@@ -3,7 +3,7 @@ package com.mtv.erp.mybatis.daoimpl;
 import com.mtv.erp.dao.UserDao;
 import com.mtv.erp.exception.ErrorCode;
 import com.mtv.erp.exception.ServerException;
-import com.mtv.erp.model.User;
+import com.mtv.erp.model.User1;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -15,7 +15,7 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDaoImpl.class);
 
     @Override
-    public User insert(User user) throws ServerException {
+    public User1 insert(User1 user) throws ServerException {
         LOGGER.debug("DAO insert");
         try (SqlSession sqlSession = getSession()) {
             try {
@@ -35,7 +35,7 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
     }
 
     @Override
-    public boolean update(User user) throws ServerException {
+    public boolean update(User1 user) throws ServerException {
         LOGGER.debug("DAO update");
         try (SqlSession sqlSession = getSession()) {
             try {
@@ -68,12 +68,12 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
 
 
     @Override
-    public User getById(int id) {
+    public User1 getById(int id) {
         return null;
     }
 
     @Override
-    public List<User> getAll() throws ServerException {
+    public List<User1> getAll() throws ServerException {
         LOGGER.debug("DAO getAll");
         try (SqlSession sqlSession = getSession()) {
             try {
@@ -87,7 +87,7 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
     }
 
     @Override
-    public List<User> insertAll(List<User> users) throws ServerException {
+    public List<User1> insertAll(List<User1> users) throws ServerException {
         LOGGER.debug("DAO insert all");
         try (SqlSession sqlSession = getSession()) {
             try {

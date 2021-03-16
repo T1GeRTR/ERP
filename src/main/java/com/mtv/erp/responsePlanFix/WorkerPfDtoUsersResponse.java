@@ -1,27 +1,27 @@
 package com.mtv.erp.responsePlanFix;
 
 
-import com.mtv.erp.model.User;
+import com.mtv.erp.model.User1;
 
 import java.util.List;
 import java.util.Objects;
 
 public class WorkerPfDtoUsersResponse {
-    private List<User> users;
+    private List<User1> users;
     private int totalCount;
     private int count;
 
-    public WorkerPfDtoUsersResponse(List<User> users, int totalCount, int count) {
+    public WorkerPfDtoUsersResponse(List<User1> users, int totalCount, int count) {
         this.users = users;
         this.totalCount = totalCount;
         this.count = count;
     }
 
-    public List<User> getUsers() {
+    public List<User1> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(List<User1> users) {
         this.users = users;
     }
 
