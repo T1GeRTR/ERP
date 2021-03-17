@@ -14,13 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Planfix {
-    String cmd;
-
-    public Planfix(String cmd){
-        this.cmd = cmd;
-    }
 
     public List<User> getUsers() throws ServerException {
+        String cmd = "getUsers";
         try {
             Runtime rt = Runtime.getRuntime() ;
             Process p = rt.exec("./planfix/PlanFix.Console.exe " + cmd) ;
@@ -43,7 +39,8 @@ public class Planfix {
         }
     }
 
-    public String getProjects() throws ServerException{
+    public String getProjects(String status) throws ServerException{
+        String cmd = "getProjects " + status;
         try {
             Runtime rt = Runtime.getRuntime() ;
             Process p = rt.exec("./planfix/PlanFix.Console.exe " + cmd) ;

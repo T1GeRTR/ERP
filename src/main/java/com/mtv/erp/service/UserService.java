@@ -14,11 +14,12 @@ import java.util.List;
 
 @Service
 public class UserService {
+
     @Autowired
-    UserDao userDao = new UserDaoImpl();
+    UserDao userDao;
 
     public boolean update() throws ServerException {
-        Planfix planfix = new Planfix("getUsers");
+        Planfix planfix = new Planfix();
         List<User> usersFromPf = planfix.getUsers();
         List<User> users = userDao.getAll();
         List<User> usersUpdate = new ArrayList<>();
@@ -48,5 +49,9 @@ public class UserService {
             userDao.delete(user.getId());
         }
         return true;
+    }
+
+    public List<User> getAll() throws ServerException {
+        return userDao.getAll();
     }
 }

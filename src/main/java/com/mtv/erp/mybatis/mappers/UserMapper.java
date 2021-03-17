@@ -38,7 +38,7 @@ public interface UserMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insertAll(@Param("list") List<User> list);
 
-    @Select({"SELECT * FROM user WHERE NOT deleted = 1"})
+    @Select({"SELECT * FROM user WHERE NOT deleted = 1 ORDER BY lastname"})
     List<User> getAll();
 
 //    @Delete({"DELETE FROM session WHERE sessionId = #{sessionId}"})
