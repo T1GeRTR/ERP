@@ -3,8 +3,7 @@ package com.mtv.erp.mybatis.daoimpl;
 import com.mtv.erp.dao.UserDao;
 import com.mtv.erp.exception.ErrorCode;
 import com.mtv.erp.exception.ServerException;
-import com.mtv.erp.model.User1;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+import com.mtv.erp.model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +14,7 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDaoImpl.class);
 
     @Override
-    public User1 insert(User1 user) throws ServerException {
+    public User insert(User user) throws ServerException {
         LOGGER.debug("DAO insert");
         try (SqlSession sqlSession = getSession()) {
             try {
@@ -23,9 +22,6 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
             } catch (RuntimeException e) {
                 LOGGER.debug("Can't insert user {}", user, e);
                 sqlSession.rollback();
-                if (e.getCause() instanceof MySQLIntegrityConstraintViolationException) {
-                    throw new ServerException(ErrorCode.DUPLICATE_LOGIN, user.getLogin());
-                }
                 throw new ServerException(ErrorCode.DATABASE_ERROR);
             }
             sqlSession.commit();
@@ -35,7 +31,7 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
     }
 
     @Override
-    public boolean update(User1 user) throws ServerException {
+    public boolean update(User user) throws ServerException {
         LOGGER.debug("DAO update");
         try (SqlSession sqlSession = getSession()) {
             try {
@@ -43,7 +39,7 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
             } catch (RuntimeException e) {
                 LOGGER.debug("Can't update user {}", user, e);
                 sqlSession.rollback();
-                throw new ServerException(ErrorCode.CANT_UPDATE_USER, user.getLogin());
+                throw new ServerException(ErrorCode.CANT_UPDATE_USER);
             }
             sqlSession.commit();
         }
@@ -68,12 +64,12 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
 
 
     @Override
-    public User1 getById(int id) {
+    public User getById(int id) {
         return null;
     }
 
     @Override
-    public List<User1> getAll() throws ServerException {
+    public List<User> getAll() throws ServerException {
         LOGGER.debug("DAO getAll");
         try (SqlSession sqlSession = getSession()) {
             try {
@@ -87,7 +83,7 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
     }
 
     @Override
-    public List<User1> insertAll(List<User1> users) throws ServerException {
+    public List<User> insertAll(List<User> users) throws ServerException {
         LOGGER.debug("DAO insert all");
         try (SqlSession sqlSession = getSession()) {
             try {

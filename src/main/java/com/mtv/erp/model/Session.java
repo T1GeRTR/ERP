@@ -5,14 +5,14 @@ import java.util.UUID;
 
 public class Session {
     private String sessionId;
-    private User1 user;
+    private User user;
 
     public Session() {
         this.sessionId = UUID.randomUUID().toString();
         this.user = null;
     }
 
-    public Session(String sessionId, User1 user) {
+    public Session(String sessionId, User user) {
         this.sessionId = sessionId;
         this.user = user;
     }
@@ -29,11 +29,11 @@ public class Session {
         this.sessionId = sessionId;
     }
 
-    public User1 getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

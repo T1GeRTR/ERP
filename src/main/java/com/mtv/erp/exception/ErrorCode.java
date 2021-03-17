@@ -45,7 +45,8 @@ public enum ErrorCode {
     SPECIALITY_NOT_FOUND("specilaity", "Specilaliyu %s not found"),
     DAY_IN_DOCTOR_SCHEDULE_NOT_FOUND("date", "Day in doctor's schedule not found"),
     PATIENT_BUSY("date time", "Patient is busy at this date and time"),
-    HTTP_MESSAGE_NOT_READBLE("parameters", "Incorrect parameters");
+    HTTP_MESSAGE_NOT_READBLE("parameters", "Incorrect parameters"),
+    PLANFIX_CANT_GET_USERS("getUsers", "Can't get users rom PlanFix");
 
     private final String field;
     private String message;

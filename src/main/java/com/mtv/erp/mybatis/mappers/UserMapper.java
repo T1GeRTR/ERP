@@ -2,7 +2,7 @@ package com.mtv.erp.mybatis.mappers;
 
 import com.mtv.erp.model.Department;
 import com.mtv.erp.model.Position;
-import com.mtv.erp.model.User1;
+import com.mtv.erp.model.User;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
@@ -10,9 +10,8 @@ import java.util.List;
 
 public interface UserMapper {
 
-    @Insert({"INSERT INTO user (idPf, login, firstname, lastname, patronymic) VALUES (#{user.idPf}, #{user.login}, #{user.firstname}, #{user.lastname}, #{user.patronymic})"})
-    @Options(useGeneratedKeys = true, keyProperty = "user.id")
-    void insert(@Param("user") User1 user);
+    @Insert({"INSERT INTO user (id, firstname, lastname, email) VALUES (#{user.id}, #{user.firstname}, #{user.lastname}, #{user.email}"})
+    void insert(@Param("user") User user);
 
     @Select({"SELECT * FROM user WHERE id = #{id} AND deleted = FALSE"})
     @Results({
@@ -21,26 +20,26 @@ public interface UserMapper {
             @Result(property = "position", column = "positionId", javaType = Position.class,
                     one = @One(select = "com.mtv.erp.mybatis.mappers.PositionMapper.getById", fetchType = FetchType.EAGER))
     })
-    User1 getById(@Param("id") int id);
+    User getById(@Param("id") int id);
 
 
-    @Update({"UPDATE user SET login = #{user.login}, firstname = #{user.firstname}, lastname = #{user.lastname}, patronymic = #{user.patronymic} WHERE id = #{user.id}"})
-    boolean update(@Param("user") User1 user);
+    @Update({"UPDATE user SET login = #{user.firstname}, firstname = #{user.lastname}, lastname = #{user.email} WHERE id = #{user.id}"})
+    boolean update(@Param("user") User user);
 
-    @Delete("DELETE FROM user WHERE id = #{id}")
+    @Delete("UPDATE user SET deleted = 1 WHERE id = #{id}")
     Integer delete(@Param("id") Integer userId);
 
     @Insert({"<script>",
-            "INSERT INTO worker (idPf, login, firstname, lastname, patronymic) VALUES",
+            "INSERT INTO user (id, firstname, lastname, email) VALUES",
             "<foreach item='user' collection= 'list' separator=', '>",
-            "(#{user.idPf}, #{user.login}, #{user.firstname}, #{user.lastname}, #{user.patronymic})",
+            "(#{user.id}, #{user.firstname}, #{user.lastname}, #{user.email})",
             "</foreach>",
             "</script>"})
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    List<User1> insertAll(@Param("list") List<User1> list);
+    int insertAll(@Param("list") List<User> list);
 
-    @Select({"SELECT * FROM user"})
-    List<User1> getAll();
+    @Select({"SELECT * FROM user WHERE NOT deleted = 1"})
+    List<User> getAll();
 
 //    @Delete({"DELETE FROM session WHERE sessionId = #{sessionId}"})
 //    Integer logout(@Param("sessionId") String sessionId);

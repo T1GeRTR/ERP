@@ -7,9 +7,9 @@ import java.util.Objects;
 public class Department {
     private int id;
     private String name;
-    private List<User1> users;
+    private List<User> users;
 
-    public Department(int id, String name, List<User1> users) {
+    public Department(int id, String name, List<User> users) {
         this.id = id;
         this.name = name;
         this.users = users;
@@ -37,11 +37,11 @@ public class Department {
         this.name = name;
     }
 
-    public List<User1> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User1> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 

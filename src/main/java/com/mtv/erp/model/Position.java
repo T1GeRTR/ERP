@@ -7,10 +7,10 @@ import java.util.Objects;
 public class Position {
     private int id;
     private String name;
-    private List<User1> users;
+    private List<User> users;
     private Department department;
 
-    public Position(int id, String name, List<User1> users, Department department) {
+    public Position(int id, String name, List<User> users, Department department) {
         this.id = id;
         this.name = name;
         this.users = users;
@@ -39,11 +39,11 @@ public class Position {
         this.name = name;
     }
 
-    public List<User1> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User1> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 

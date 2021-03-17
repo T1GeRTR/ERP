@@ -1,23 +1,17 @@
 package com.mtv.erp.dao;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.mtv.erp.TestPlanfix.Response;
+import com.google.gson.Gson;
+import com.mtv.erp.model.User;
 import com.mtv.erp.mybatis.daoimpl.UserDaoImpl;
-import com.mtv.erp.requestPlanFix.PfDtoRequest;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
-import java.io.IOException;
-import java.util.Objects;
+import java.lang.reflect.Type;
+import com.google.gson.reflect.TypeToken;
+import javax.xml.bind.JAXBException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestUserDao {
     private final UserDao userDao = new UserDaoImpl();
@@ -29,25 +23,45 @@ public class TestUserDao {
 //    }
 
     @Test
-    public void XmlTest() throws JSONException, IOException {
+    public void XmlTest() throws IOException, JAXBException {
         RestTemplate restTemplate = new RestTemplate();
-        String body = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<request method=\"user.getList\">\n" +
-                "  <account>Aseng</account>\n" +
-                "  <status>ACTIVE</status>\n" +
-                "  <pageCurrent>1</pageCurrent>\n" +
-                "  <pageSize>100</pageSize>\n" +
-                "</request>";
-        PfDtoRequest pfRequest = new PfDtoRequest("user.getList");
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Authorization", "Basic YTU3YmYxZTg5ZmZlZDY1ZmJhYzRkZmZkNmE2Nzg4OWM6YTUyZDk2ZDE0MTI3OGEzZTI5ZTgyZmVhMTUwZWRlMzY=");
-        httpHeaders.setContentType(MediaType.APPLICATION_XML);
-        HttpEntity<String> request = new HttpEntity<>(body, httpHeaders);
-        ResponseEntity<String> response = restTemplate.postForEntity("https://apiru.planfix.ru/xml", request, String.class);
+        try {
+            String cmd = "getUsers";
+            Runtime rt = Runtime.getRuntime() ;
+            Process p = rt.exec("./planfix/PlanFix.Console.exe " + cmd) ;
+            InputStream in = p.getInputStream();
+            OutputStream out = p.getOutputStream ();
+            InputStream err = p.getErrorStream() ;
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+            StringBuilder str = new StringBuilder();
+            String line = "";
+            while ((line = br.readLine()) != null){
+                str.append(line);
+            }
+            p.destroy() ;
+            System.out.println(str);
+            Gson gson = new Gson();
+            Type listType = new TypeToken<ArrayList<User>>(){}.getType();
+            List<User> users = gson.fromJson(str.toString(), listType);
+            users.get(0);
+        }
+        catch(Exception exc)
+        {
+            exc.printStackTrace();
+        }
+
+        ResponseEntity<String> response = restTemplate.getForEntity("http://192.168.0.123:90/getUsers", String.class);
+        //String utf8String= new String(response.getBody().getBytes("WINDOWS-1251"), StandardCharsets.UTF_8);
         System.out.println(response.getBody());
-        XmlMapper xmlMapper = new XmlMapper();
-        xmlMapper.readValue(response.getBody(), Response.class);
-//        ObjectMapper objectMapper = new ObjectMapper();
+        Gson gson = new Gson();
+        List<User> users =  gson.fromJson(response.getBody().replace("<html><body>", "").replace("</body></html>", ""), List.class);
+        users.get(0);
+
+       // System.out.println(utf8String);
+//        System.out.println(response.getBody());
+//        XmlMapper xmlMapper = new XmlMapper();
+//        xmlMapper.readValue(response.getBody(), UsersResponse.class);
+ //       ObjectMapper objectMapper = new ObjectMapper();
 //        String value = objectMapper.writeValueAsString(jsonNode);
 //        System.out.println(value);
     }
