@@ -1,8 +1,10 @@
 package com.mtv.erp.dao;
 
 import com.google.gson.Gson;
+import com.mtv.erp.exception.ServerException;
 import com.mtv.erp.model.User;
 import com.mtv.erp.mybatis.daoimpl.UserDaoImpl;
+import com.mtv.erp.utils.Planfix;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -65,4 +67,11 @@ public class TestUserDao {
 //        String value = objectMapper.writeValueAsString(jsonNode);
 //        System.out.println(value);
     }
+
+    @Test
+    public void TestGetProjects() throws ServerException {
+        Planfix planfix = new Planfix("getProjects active");
+        System.out.println(planfix.getProjects());
+    }
+
 }
