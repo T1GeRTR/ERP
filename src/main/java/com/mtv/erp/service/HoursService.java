@@ -8,6 +8,7 @@ import com.mtv.erp.model.LaborRecord;
 import com.mtv.erp.model.User;
 import com.mtv.erp.mybatis.daoimpl.HoursDaoImpl;
 import com.mtv.erp.response.planfixResponse.PlanfixLaborRecord;
+import com.mtv.erp.utils.MonthYearConverter;
 import com.mtv.erp.utils.Planfix;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -112,25 +113,8 @@ public class HoursService {
     }
 
     public List<LaborRecord> getFromDate(String monthYear) throws ServerException {
-        int month;
-        int year;
-        if (monthYear.matches("-")) {
-            String[] array = monthYear.split("-");
-            if (array.length < 2) {
-                throw new ServerException(ErrorCode.INVALID_MONTH_YEAR);
-            }
-            month = Integer.parseInt(array[0]);
-            year = Integer.parseInt(array[1]);
-        } else {
-            month = Integer.parseInt(monthYear);
-            year = LocalDate.now().getYear();
-        }
-        if (month > 12) {
-            throw new ServerException(ErrorCode.INVALID_MONTH);
-        }
-        if (year > LocalDate.now().getYear()) {
-            throw new ServerException(ErrorCode.INVALID_YEAR);
-        }
+        int month = MonthYearConverter.getMonth(monthYear);
+        int year = MonthYearConverter.getYear(monthYear);
         LocalDate from = LocalDate.of(year, month, 1);
         LocalDate to = (from.getMonthValue() < LocalDate.now().getMonthValue() && from.getYear() <= LocalDate.now().getYear()) ? from.withDayOfMonth(from.lengthOfMonth()) : LocalDate.now();
         return hoursDao.getFromDate(from, to);

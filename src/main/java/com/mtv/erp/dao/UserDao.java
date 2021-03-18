@@ -3,6 +3,7 @@ package com.mtv.erp.dao;
 import com.mtv.erp.exception.ServerException;
 import com.mtv.erp.model.User;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface UserDao {
@@ -13,6 +14,10 @@ public interface UserDao {
     boolean update (User user) throws ServerException;
 
     User getById (int id);
+
+    User getFromDateById(LocalDate from, LocalDate to, int id) throws ServerException;
+
+    List<User> getFromDate(LocalDate from, LocalDate to) throws ServerException;
 
     List<User> getAll () throws ServerException;
 

@@ -1,11 +1,13 @@
 package com.mtv.erp.mybatis.mappers;
 
 import com.mtv.erp.model.Department;
+import com.mtv.erp.model.LaborRecord;
 import com.mtv.erp.model.Position;
 import com.mtv.erp.model.User;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface UserMapper {
@@ -34,6 +36,13 @@ public interface UserMapper {
 
     @Select({"SELECT id, firstname, lastname, email FROM user WHERE NOT deleted = 1 ORDER BY lastname"})
     List<User> getAll();
+
+    @Select({"SELECT user.id as id, user.firstName as firstname, user.lastName as lastname, user.email as email, MIN(user_hours.date) as fromdate, MAX(user_hours.date) as todate FROM user, user_hours WHERE user.id = #{id} AND user_hours.date BETWEEN #{from} AND #{to} AND user.deleted = 0"})
+    @Results({
+            @Result(property = "hours", column = "{from = fromdate, to = todate, userId = id}", javaType = List.class,
+                    many = @Many(select = "com.mtv.erp.mybatis.mappers.HoursMapper.getFromDateByUserId", fetchType = FetchType.LAZY))
+    })
+    User getByIdWithHours(@Param("id") int id, @Param("from") LocalDate from, @Param("to") LocalDate to);
 
 //    @Delete({"DELETE FROM session WHERE sessionId = #{sessionId}"})
 //    Integer logout(@Param("sessionId") String sessionId);

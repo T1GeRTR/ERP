@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -71,6 +73,36 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
     }
 
     @Override
+    public User getFromDateById(LocalDate from, LocalDate to, int id) throws ServerException {
+        LOGGER.debug("DAO get user by id");
+        try (SqlSession sqlSession = getSession()) {
+            try {
+                return getUserMapper(sqlSession).getByIdWithHours(id, from, to);
+            } catch (RuntimeException e) {
+                LOGGER.debug("Can't get user by id {}", id, e);
+                throw new ServerException(ErrorCode.DATABASE_ERROR);
+            }
+        }
+    }
+
+    @Override
+    public List<User> getFromDate(LocalDate from, LocalDate to) throws ServerException {
+        LOGGER.debug("DAO get all user");
+        try (SqlSession sqlSession = getSession()) {
+            try {
+                List<User> users = new ArrayList<>();
+                for (User user : getUserMapper(sqlSession).getAll()) {
+                    users.add(getUserMapper(sqlSession).getByIdWithHours(user.getId(), from, to));
+                }
+                return users;
+            } catch (RuntimeException e) {
+                LOGGER.debug("Can't get all user with hours", e);
+                throw new ServerException(ErrorCode.DATABASE_ERROR);
+            }
+        }
+    }
+
+    @Override
     public List<User> getAll() throws ServerException {
         LOGGER.debug("DAO getAll");
         try (SqlSession sqlSession = getSession()) {
@@ -78,7 +110,6 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
                 return getUserMapper(sqlSession).getAll();
             } catch (RuntimeException e) {
                 LOGGER.debug("Can't get all users", e);
-                sqlSession.rollback();
                 throw new ServerException(ErrorCode.DATABASE_ERROR);
             }
         }

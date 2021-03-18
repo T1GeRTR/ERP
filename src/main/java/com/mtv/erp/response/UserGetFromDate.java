@@ -1,20 +1,20 @@
-package com.mtv.erp.model;
+package com.mtv.erp.response;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mtv.erp.model.LaborRecord;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@JsonIgnoreProperties(value = "handler")
-public class User {
+
+public class UserGetFromDate {
     private int id;
     private String firstname;
     private String lastname;
     private String email;
     private List<LaborRecord> hours;
 
-    public User(int id, String firstname, String lastname, String email, List<LaborRecord> hours) {
+    public UserGetFromDate(int id, String firstname, String lastname, String email, List<LaborRecord> hours) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -22,15 +22,15 @@ public class User {
         this.hours = hours;
     }
 
-    public User(String firstname, String lastname) {
+    public UserGetFromDate(String firstname, String lastname) {
         this(0, firstname, lastname, "", new ArrayList<>());
     }
 
-    public User(int id, String firstname, String lastname, String email) {
+    public UserGetFromDate(int id, String firstname, String lastname, String email) {
         this(id, firstname, lastname, email, new ArrayList<>());
     }
 
-    public User() {
+    public UserGetFromDate() {
     }
 
     public int getId() {
@@ -76,8 +76,8 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
+        if (!(o instanceof UserGetFromDate)) return false;
+        UserGetFromDate user = (UserGetFromDate) o;
         return getId() == user.getId() &&
                 Objects.equals(getFirstname(), user.getFirstname()) &&
                 Objects.equals(getLastname(), user.getLastname()) &&

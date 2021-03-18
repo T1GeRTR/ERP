@@ -40,12 +40,19 @@ public interface HoursMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insertAll(@Param("list") List<LaborRecord> list);
 
-    @Select({"SELECT id, userId, date, hours, taskId, taskTitle, projectId, projectTitle FROM user_hours WHERE NOT date <= #{from} AND date >= #{to} AND NOT deleted = 1 ORDER BY date"})
+    @Select({"SELECT id, userId, date, hours, taskId, taskTitle, projectId, projectTitle FROM user_hours WHERE NOT date BETWEEN #{from} AND #{to} AND NOT deleted = 1 ORDER BY date"})
     @Results({
             @Result(property = "user", column = "userId", javaType = User.class,
                     one = @One(select = "com.mtv.erp.mybatis.mappers.UserMapper.getById", fetchType = FetchType.LAZY))
     })
     List<LaborRecord> getFromDate(@Param("from") LocalDate from, @Param("to") LocalDate to);
+
+    @Select({"SELECT id, userId, date, hours, taskId, taskTitle, projectId, projectTitle FROM user_hours WHERE date BETWEEN #{from} AND #{to} AND userId = #{userId} AND NOT deleted = 1 ORDER BY date"})
+    @Results({
+            @Result(property = "user", column = "userId", javaType = User.class,
+                    one = @One(select = "com.mtv.erp.mybatis.mappers.UserMapper.getById", fetchType = FetchType.LAZY))
+    })
+    List<LaborRecord> getFromDateByUserId(@Param("from") LocalDate from, @Param("to") LocalDate to, @Param("userId") int userId);
 
 
 //    @Delete({"DELETE FROM session WHERE sessionId = #{sessionId}"})
