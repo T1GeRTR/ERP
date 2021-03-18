@@ -5,8 +5,8 @@ CREATE DATABASE `erp`;
 USE `erp`;
 
 CREATE TABLE `department` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`name` varchar(50) NOT NULL,
+	  `id` int(11) NOT NULL AUTO_INCREMENT,
+	  `name` varchar(50) NOT NULL,
     `deleted` boolean NOT NULL DEFAULT FALSE,
     PRIMARY KEY (id),
     KEY name (name),
@@ -25,17 +25,15 @@ CREATE TABLE `position` (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `user` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `login` varchar(50) NOT NULL,
+    `id` int(11) NOT NULL,
     `firstName` varchar(50) NOT NULL,
     `lastName` varchar(50) NOT NULL,
-    `patronymic` varchar(50),
+    `email` varchar(50) NOT NULL,
     `deleted` boolean NOT NULL DEFAULT FALSE,
     PRIMARY KEY (id),
-    UNIQUE KEY login (login),
     KEY firstName (firstName),
     KEY lastName (lastName),
-    KEY patronymic (patronymic),
+    KEY email (email),
     KEY deleted (deleted)
     ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -78,15 +76,17 @@ CREATE TABLE `user_hours` (
     `date` date NOT NULL,
     `hours` int(11) NOT NULL,
     `taskId` int(11) NOT NULL,
+    `taskTitle` varchar(200) NOT NULL,
     `projectId` int(11) NOT NULL,
+    `projectTitle` varchar(200) NOT NULL,
+    `deleted` boolean NOT NULL DEFAULT FALSE,
     PRIMARY KEY (id),
     FOREIGN KEY (userId) REFERENCES `user` (id) ON DELETE CASCADE,
     KEY `date` (date),
     KEY `hours` (date),
-    FOREIGN KEY (taskId) REFERENCES `task` (id) ON DELETE CASCADE,
-    FOREIGN KEY (projectId) REFERENCES `project` (id) ON DELETE CASCADE
+    KEY `taskId` (taskId),
+    KEY `taskTitle` (taskTitle),
+	KEY `projectId` (taskId),
+    KEY `projectTitle` (taskTitle),
+    KEY deleted (deleted)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-INSERT INTO `department`(name) VALUES('ОПИСИ');
-
-INSERT INTO `position`(name, departmentId) VALUES('Инженер АСУТП 2 категории', 1);

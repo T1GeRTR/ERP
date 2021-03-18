@@ -1,7 +1,7 @@
 package com.mtv.erp.mybatis.daoimpl;
 
-import com.mtv.erp.model.Position;
 import com.mtv.erp.mybatis.mappers.DepartmentMapper;
+import com.mtv.erp.mybatis.mappers.HoursMapper;
 import com.mtv.erp.mybatis.mappers.PositionMapper;
 import com.mtv.erp.mybatis.mappers.UserMapper;
 import com.mtv.erp.mybatis.utils.MyBatisUtils;
@@ -24,6 +24,10 @@ public class DaoImplBase {
 
     protected PositionMapper getPositionMapper(SqlSession sqlSession) {
         return sqlSession.getMapper(PositionMapper.class);
+    }
+
+    protected HoursMapper getHoursMapper(SqlSession sqlSession) {
+        return sqlSession.getMapper(HoursMapper.class);
     }
 
 }

@@ -26,8 +26,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/user/update")
-    EmptyResponse update() throws ServerException{
-        userService.update();
-        return new EmptyResponse();
+    List<User> update() throws ServerException {
+        return userService.update();
     }
 }

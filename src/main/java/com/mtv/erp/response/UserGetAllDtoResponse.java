@@ -1,24 +1,18 @@
-package com.mtv.erp.model;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+package com.mtv.erp.response;
 
 import java.util.Objects;
 
-@JsonIgnoreProperties(value = "handler")
-public class User {
+public class UserGetAllDtoResponse {
     private int id;
     private String firstname;
     private String lastname;
     private String email;
 
-    public User(int id, String firstname, String lastname, String email) {
+    public UserGetAllDtoResponse(int id, String firstname, String lastname, String email) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-    }
-    public User(String firstname, String lastname){
-        this(0, firstname, lastname, "");
     }
 
     public int getId() {
@@ -56,8 +50,8 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
+        if (!(o instanceof UserGetAllDtoResponse)) return false;
+        UserGetAllDtoResponse user = (UserGetAllDtoResponse) o;
         return getId() == user.getId() && Objects.equals(getFirstname(), user.getFirstname()) && Objects.equals(getLastname(), user.getLastname()) && Objects.equals(getEmail(), user.getEmail());
     }
 

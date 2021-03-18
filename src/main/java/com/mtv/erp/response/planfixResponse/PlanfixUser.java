@@ -1,24 +1,24 @@
-package com.mtv.erp.model;
+package com.mtv.erp.response.planfixResponse;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
 
-@JsonIgnoreProperties(value = "handler")
-public class User {
+public class PlanfixUser {
+    @SerializedName("Id")
     private int id;
+    @SerializedName("FirstName")
     private String firstname;
+    @SerializedName("LastName")
     private String lastname;
+    @SerializedName("Email")
     private String email;
 
-    public User(int id, String firstname, String lastname, String email) {
+    public PlanfixUser(int id, String firstname, String lastname, String email) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-    }
-    public User(String firstname, String lastname){
-        this(0, firstname, lastname, "");
     }
 
     public int getId() {
@@ -56,8 +56,8 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
+        if (!(o instanceof PlanfixUser)) return false;
+        PlanfixUser user = (PlanfixUser) o;
         return getId() == user.getId() && Objects.equals(getFirstname(), user.getFirstname()) && Objects.equals(getLastname(), user.getLastname()) && Objects.equals(getEmail(), user.getEmail());
     }
 
