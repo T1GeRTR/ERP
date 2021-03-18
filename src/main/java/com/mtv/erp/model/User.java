@@ -1,17 +1,14 @@
 package com.mtv.erp.model;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.Objects;
 
+@JsonIgnoreProperties(value = "handler")
 public class User {
-    @SerializedName("Id")
     private int id;
-    @SerializedName("FirstName")
     private String firstname;
-    @SerializedName("LastName")
     private String lastname;
-    @SerializedName("Email")
     private String email;
 
     public User(int id, String firstname, String lastname, String email) {
@@ -19,6 +16,9 @@ public class User {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
+    }
+    public User(String firstname, String lastname){
+        this(0, firstname, lastname, "");
     }
 
     public int getId() {

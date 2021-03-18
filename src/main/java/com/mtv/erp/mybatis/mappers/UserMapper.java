@@ -13,13 +13,7 @@ public interface UserMapper {
     @Insert({"INSERT INTO user (id, firstname, lastname, email) VALUES (#{user.id}, #{user.firstname}, #{user.lastname}, #{user.email}"})
     void insert(@Param("user") User user);
 
-    @Select({"SELECT * FROM user WHERE id = #{id} AND deleted = FALSE"})
-    @Results({
-            @Result(property = "department", column = "departmentId", javaType = Department.class,
-                    one = @One(select = "com.mtv.erp.mybatis.mappers.DepartmentMapper.getById", fetchType = FetchType.EAGER)),
-            @Result(property = "position", column = "positionId", javaType = Position.class,
-                    one = @One(select = "com.mtv.erp.mybatis.mappers.PositionMapper.getById", fetchType = FetchType.EAGER))
-    })
+    @Select({"SELECT id, firstname, lastname, email FROM user WHERE id = #{id} AND NOT deleted = 1"})
     User getById(@Param("id") int id);
 
 
@@ -38,7 +32,7 @@ public interface UserMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insertAll(@Param("list") List<User> list);
 
-    @Select({"SELECT * FROM user WHERE NOT deleted = 1"})
+    @Select({"SELECT id, firstname, lastname, email FROM user WHERE NOT deleted = 1 ORDER BY lastname"})
     List<User> getAll();
 
 //    @Delete({"DELETE FROM session WHERE sessionId = #{sessionId}"})

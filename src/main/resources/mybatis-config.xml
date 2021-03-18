@@ -28,6 +28,7 @@
         <mapper class="com.mtv.erp.mybatis.mappers.UserMapper"/>
         <mapper class="com.mtv.erp.mybatis.mappers.DepartmentMapper"/>
         <mapper class="com.mtv.erp.mybatis.mappers.PositionMapper"/>
+        <mapper class="com.mtv.erp.mybatis.mappers.HoursMapper"/>
     </mappers>
 
 </configuration>
