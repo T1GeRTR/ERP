@@ -5,8 +5,8 @@ CREATE DATABASE `erp`;
 USE `erp`;
 
 CREATE TABLE `department` (
-	  `id` int(11) NOT NULL AUTO_INCREMENT,
-	  `name` varchar(50) NOT NULL,
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`name` varchar(50) NOT NULL,
     `deleted` boolean NOT NULL DEFAULT FALSE,
     PRIMARY KEY (id),
     KEY name (name),
