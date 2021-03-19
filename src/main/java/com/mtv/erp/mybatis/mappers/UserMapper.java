@@ -39,8 +39,17 @@ public interface UserMapper {
 
     @Select({"SELECT user.id as id, user.firstName as firstname, user.lastName as lastname, user.email as email, MIN(user_hours.date) as fromdate, MAX(user_hours.date) as todate FROM user, user_hours WHERE user.id = #{id} AND user_hours.date BETWEEN #{from} AND #{to} AND user.deleted = 0"})
     @Results({
+            @Result(property = "userHours", column = "{from = fromdate, to = todate, userId = id}", javaType = List.class,
+                    many = @Many(select = "com.mtv.erp.mybatis.mappers.HoursMapper.getFromDateByUserId", fetchType = FetchType.LAZY)),
             @Result(property = "hours", column = "{from = fromdate, to = todate, userId = id}", javaType = List.class,
-                    many = @Many(select = "com.mtv.erp.mybatis.mappers.HoursMapper.getFromDateByUserId", fetchType = FetchType.LAZY))
+                    many = @Many(select = "com.mtv.erp.mybatis.mappers.HoursMapper.getFromDateByUserIdHours", fetchType = FetchType.LAZY))
+    })
+    User getByIdWithUserHours(@Param("id") int id, @Param("from") LocalDate from, @Param("to") LocalDate to);
+
+    @Select({"SELECT user.id as id, user.firstName as firstname, user.lastName as lastname, user.email as email, MIN(user_hours.date) as fromdate, MAX(user_hours.date) as todate FROM user, user_hours WHERE user.id = #{id} AND user_hours.date BETWEEN #{from} AND #{to} AND user.deleted = 0"})
+    @Results({
+            @Result(property = "hours", column = "{from = fromdate, to = todate, userId = id}", javaType = List.class,
+                    many = @Many(select = "com.mtv.erp.mybatis.mappers.HoursMapper.getFromDateByUserIdHours", fetchType = FetchType.LAZY))
     })
     User getByIdWithHours(@Param("id") int id, @Param("from") LocalDate from, @Param("to") LocalDate to);
 

@@ -19,7 +19,6 @@ public class LaborRecord {
     public LaborRecord() {
     }
 
-
     public LaborRecord(int id, User user, LocalDate date, int hours, int taskId, String taskTitle, int projectId, String projectTitle) {
         this.id = id;
         this.user = user;
@@ -104,11 +103,11 @@ public class LaborRecord {
         if (this == o) return true;
         if (!(o instanceof LaborRecord)) return false;
         LaborRecord that = (LaborRecord) o;
-        return getId() == that.getId() && getHours() == that.getHours() && getTaskId() == that.getTaskId() && getProjectId() == that.getProjectId() && Objects.equals(getDate(), that.getDate()) && Objects.equals(getTaskTitle(), that.getTaskTitle()) && Objects.equals(getProjectTitle(), that.getProjectTitle());
+        return getTaskId() == that.getTaskId() && getProjectId() == that.getProjectId() && Objects.equals(getDate(), that.getDate()) && Objects.equals(getTaskTitle(), that.getTaskTitle()) && Objects.equals(getProjectTitle(), that.getProjectTitle());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getDate(), getHours(), getTaskId(), getTaskTitle(), getProjectId(), getProjectTitle());
+        return Objects.hash(getDate(), getTaskId(), getTaskTitle(), getProjectId(), getProjectTitle());
     }
 }

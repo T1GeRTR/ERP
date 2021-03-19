@@ -31,3 +31,14 @@ margin: 0;
 .td-name {
     width: 200px;
 }
+
+input{
+text-align: center;
+width: 100%;
+Border: none;
+outline: none;
+}
+
+.input-save{
+background-color: #00FF00;
+}

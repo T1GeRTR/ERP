@@ -1,28 +1,26 @@
 package com.mtv.erp.controller;
 
 import com.mtv.erp.exception.ServerException;
-import com.mtv.erp.model.LaborRecord;
+import com.mtv.erp.response.EmptyResponse;
 import com.mtv.erp.service.HoursService;
+import com.mtv.erp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
-@CrossOrigin(origins = "*")
 @RestController
 public class HoursController {
 
     @Autowired
     private HoursService hoursService;
 
-    @GetMapping(path = "/hours/{monthYear}", produces = MediaType.APPLICATION_JSON_VALUE)
-    List<LaborRecord> get(@PathVariable("monthYear") String monthYear) throws ServerException {
-        return hoursService.getFromDate(monthYear);
-    }
+    @Autowired
+    private UserService userService;
 
-    @PostMapping(path = "/hours/update")
-    List<LaborRecord> update() throws ServerException {
+    @RequestMapping(value = {"/hours/update"}, method = RequestMethod.GET)
+    EmptyResponse update() throws ServerException {
+        userService.update();
         return hoursService.update();
     }
 }

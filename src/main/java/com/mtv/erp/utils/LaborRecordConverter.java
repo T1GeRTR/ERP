@@ -1,18 +1,93 @@
 package com.mtv.erp.utils;
 
+import com.mtv.erp.model.Hours;
 import com.mtv.erp.model.LaborRecord;
-import com.mtv.erp.response.GetUserLaborRecord;
+import com.mtv.erp.model.User;
+import com.mtv.erp.response.HoursGetUserDtoResponse;
+import com.mtv.erp.response.UserHoursGetUserDtoResponse;
+import com.mtv.erp.response.planfixResponse.PlanfixLaborRecord;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class LaborRecordConverter {
 
-    public static List<GetUserLaborRecord> convertLaborRecord(List<LaborRecord> laborRecords) {
-        List<GetUserLaborRecord> list = new ArrayList<>();
+    public static List<UserHoursGetUserDtoResponse> convertLaborRecord(List<LaborRecord> laborRecords) {
+        List<UserHoursGetUserDtoResponse> list = new ArrayList<>();
         for (LaborRecord laborRecord : laborRecords) {
-            list.add(new GetUserLaborRecord(laborRecord.getId(), laborRecord.getUser(), laborRecord.getDate(), laborRecord.getHours(), String.valueOf(laborRecord.getTaskId()), laborRecord.getTaskTitle(), String.valueOf(laborRecord.getProjectId()), laborRecord.getProjectTitle()));
+            list.add(new UserHoursGetUserDtoResponse(laborRecord.getId(), laborRecord.getUser(), laborRecord.getDate(), laborRecord.getHours(), String.valueOf(laborRecord.getTaskId()), laborRecord.getTaskTitle(), String.valueOf(laborRecord.getProjectId()), laborRecord.getProjectTitle()));
         }
         return list;
+    }
+
+    public static List<HoursGetUserDtoResponse> convertHours(List<Hours> hours) {
+        List<HoursGetUserDtoResponse> list = new ArrayList<>();
+        for (Hours hour : hours) {
+                list.add(new HoursGetUserDtoResponse(hour.getId(), hour.getUser(), hour.getDate(), hour.getHours(), hour.isSaved()));
+        }
+        return list;
+    }
+
+    public static List<Hours> convertHours(List<Hours> hours, LocalDate date) {
+        Hours[] monthHours = new Hours[date.lengthOfMonth()];
+        for (int i = 0; i < monthHours.length; i++) {
+            monthHours[i] = new Hours(0, LocalDate.of(date.getYear(), date.getMonth(), i + 1), null);
+        }
+        if (hours.size() == 0) {
+            return Arrays.asList(monthHours);
+        }
+        for (Hours elem : hours) {
+            int index = elem.getDate().getDayOfMonth() - 1;
+            if (monthHours[index].getHours() == 0) {
+                monthHours[index] = elem;
+            } else {
+                Hours record = monthHours[index];
+                record.setHours(record.getHours() + elem.getHours());
+            }
+        }
+        return Arrays.asList(monthHours);
+    }
+
+    public static List<Hours> convertToHours(List<LaborRecord> laborRecords) {
+        List<Hours> list = new ArrayList<>();
+        for (LaborRecord laborRecord : laborRecords) {
+            list.add(new Hours(laborRecord.getId(), laborRecord.getUser(), laborRecord.getDate(), laborRecord.getHours()));
+        }
+        return uniqueDayHours(list);
+    }
+
+    private static List<Hours> uniqueDayHours(List<Hours> hours) {
+        List<Integer> deleteIds = new ArrayList<>();
+        List<Hours> list = new ArrayList<>(hours);
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.size(); j++) {
+                Hours hours1 = list.get(i);
+                Hours hours2 = list.get(j);
+                if (hours1.getUser().getFirstname().equals(hours2.getUser().getFirstname()) && hours1.getUser().getLastname().equals(hours2.getUser().getLastname()) && hours1.getUser().getEmail().equals(hours2.getUser().getEmail()) && hours1.getDate().equals(hours2.getDate()))
+                    if (i != j) {
+                        if (!(deleteIds.contains(i) || deleteIds.contains(j))) {
+                            hours1.setHours(hours1.getHours() + hours2.getHours());
+                            deleteIds.add(j);
+                        }
+                    }
+            }
+        }
+        for (int index : deleteIds) {
+            list.set(index, null);
+        }
+        list.removeIf(Objects::isNull);
+        return list;
+    }
+
+    public static List<LaborRecord> fromPlanfix(List<PlanfixLaborRecord> planfixLaborRecords) {
+        List<LaborRecord> laborRecords = new ArrayList<>();
+        for (PlanfixLaborRecord planfixLaborRecord : planfixLaborRecords) {
+            planfixLaborRecord.setLocalDateTime();
+            laborRecords.add(new LaborRecord(new User(planfixLaborRecord.getFirstname(), planfixLaborRecord.getLastname()), planfixLaborRecord.getStartTime().toLocalDate(), planfixLaborRecord.getLaborSpan().getHour(), (int) planfixLaborRecord.getTaskId(), planfixLaborRecord.getTaskTitle(), (int) planfixLaborRecord.getProjectId(), planfixLaborRecord.getProjectTitle()));
+        }
+        return laborRecords;
     }
 }

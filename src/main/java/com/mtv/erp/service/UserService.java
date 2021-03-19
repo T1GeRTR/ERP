@@ -3,8 +3,8 @@ package com.mtv.erp.service;
 import com.mtv.erp.dao.UserDao;
 import com.mtv.erp.exception.ServerException;
 import com.mtv.erp.model.User;
-import com.mtv.erp.response.UserGetFromDate;
-import com.mtv.erp.response.UserGetFromDateById;
+import com.mtv.erp.response.UserGetFromDateDtoResponse;
+import com.mtv.erp.response.UserGetFromDateByIdDtoResponse;
 import com.mtv.erp.response.UserGetAllDtoResponse;
 import com.mtv.erp.response.planfixResponse.PlanfixUser;
 import com.mtv.erp.utils.LaborRecordConverter;
@@ -25,7 +25,7 @@ public class UserService {
     @Autowired
     UserDao userDao;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HoursService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
     public List<UserGetAllDtoResponse> update() throws ServerException {
         Planfix planfix = new Planfix();
@@ -79,24 +79,24 @@ public class UserService {
         return getAllDtoResponses;
     }
 
-    public List<UserGetFromDate> getFromDate(String monthYear) throws ServerException {
-        List<UserGetFromDate> getFromDates = new ArrayList<>();
+    public List<UserGetFromDateDtoResponse> getFromDate(String monthYear) throws ServerException {
+        List<UserGetFromDateDtoResponse> getFromDates = new ArrayList<>();
         int month = MonthYearConverter.getMonth(monthYear);
         int year = MonthYearConverter.getYear(monthYear);
         LocalDate from = LocalDate.of(year, month, 1);
         LocalDate to = (from.getMonthValue() < LocalDate.now().getMonthValue() && from.getYear() <= LocalDate.now().getYear()) ? from.withDayOfMonth(from.lengthOfMonth()) : LocalDate.now();
         for (User user : userDao.getFromDate(from, to)) {
-            getFromDates.add(new UserGetFromDate(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertLaborRecord(user.getHours()), from.lengthOfMonth()));
+            getFromDates.add(new UserGetFromDateDtoResponse(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertHours(LaborRecordConverter.convertHours(user.getHours(), from)), from.lengthOfMonth()));
         }
         return getFromDates;
     }
 
-    public UserGetFromDateById getFromDateById(int id, String monthYear) throws ServerException {
+    public UserGetFromDateByIdDtoResponse getFromDateById(int id, String monthYear) throws ServerException {
         int month = MonthYearConverter.getMonth(monthYear);
         int year = MonthYearConverter.getYear(monthYear);
         LocalDate from = LocalDate.of(year, month, 1);
         LocalDate to = (from.getMonthValue() < LocalDate.now().getMonthValue() && from.getYear() <= LocalDate.now().getYear()) ? from.withDayOfMonth(from.lengthOfMonth()) : LocalDate.now();
         User user = userDao.getFromDateById(from, to, id);
-        return new UserGetFromDateById(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertLaborRecord(user.getHours()), from.lengthOfMonth());
+        return new UserGetFromDateByIdDtoResponse(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertLaborRecord(user.getUserHours()), LaborRecordConverter.convertHours(LaborRecordConverter.convertHours(user.getHours(), from)), from.lengthOfMonth());
     }
 }

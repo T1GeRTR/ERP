@@ -2,12 +2,14 @@ package com.mtv.erp.service;
 
 import com.mtv.erp.dao.HoursDao;
 import com.mtv.erp.dao.UserDao;
-import com.mtv.erp.exception.ErrorCode;
 import com.mtv.erp.exception.ServerException;
+import com.mtv.erp.model.Hours;
 import com.mtv.erp.model.LaborRecord;
 import com.mtv.erp.model.User;
-import com.mtv.erp.mybatis.daoimpl.HoursDaoImpl;
+import com.mtv.erp.response.EmptyResponse;
+import com.mtv.erp.response.UserGetFromDateDtoResponse;
 import com.mtv.erp.response.planfixResponse.PlanfixLaborRecord;
+import com.mtv.erp.utils.LaborRecordConverter;
 import com.mtv.erp.utils.MonthYearConverter;
 import com.mtv.erp.utils.Planfix;
 import org.slf4j.Logger;
@@ -31,7 +33,7 @@ public class HoursService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HoursService.class);
 
-    public List<LaborRecord> update() throws ServerException {
+    public EmptyResponse update() throws ServerException {
         Planfix planfix = new Planfix();
         LocalDate now = LocalDate.now();
         LocalDate from;
@@ -47,7 +49,7 @@ public class HoursService {
         List<LaborRecord> laborsUpdate = new ArrayList<>();
         List<LaborRecord> laborsIdDelete = new ArrayList<>(laborRecords);
         List<LaborRecord> laborsNotAdd = new ArrayList<>();
-        List<LaborRecord> laborRecordsFromPlanfix = converter(planfixLaborRecords);
+        List<LaborRecord> laborRecordsFromPlanfix = LaborRecordConverter.fromPlanfix(planfixLaborRecords);
         List<Integer> deleteIds = new ArrayList<>();
         List<User> users = userDao.getAll();
         for (LaborRecord laborRecord : laborRecordsFromPlanfix) {
@@ -81,16 +83,10 @@ public class HoursService {
             }
             for (int j = 0; j < laborRecords.size(); j++) {
                 boolean equals = laborRecordsFromPlanfix.get(i).getProjectId() == laborRecords.get(j).getProjectId() && laborRecordsFromPlanfix.get(i).getTaskId() == laborRecords.get(j).getTaskId() && laborRecordsFromPlanfix.get(i).getDate().equals(laborRecords.get(j).getDate()) && laborRecordsFromPlanfix.get(i).getUser().getFirstname().equals(laborRecords.get(j).getUser().getFirstname()) && laborRecordsFromPlanfix.get(i).getUser().getLastname().equals(laborRecords.get(j).getUser().getLastname()) && laborRecordsFromPlanfix.get(i).getUser().getEmail().equals(laborRecords.get(j).getUser().getEmail());
-                boolean a = laborRecordsFromPlanfix.get(i).getProjectId() == laborRecords.get(j).getProjectId();
-                boolean b = laborRecordsFromPlanfix.get(i).getTaskId() == laborRecords.get(j).getTaskId();
-                boolean c = laborRecordsFromPlanfix.get(i).getDate().equals(laborRecords.get(j).getDate());
-                boolean d = laborRecordsFromPlanfix.get(i).getUser().getFirstname().equals(laborRecords.get(j).getUser().getFirstname());
-                boolean e = laborRecordsFromPlanfix.get(i).getUser().getLastname().equals(laborRecords.get(j).getUser().getLastname());
-                boolean f = laborRecordsFromPlanfix.get(i).getUser().getEmail().equals(laborRecords.get(j).getUser().getEmail());
-                //boolean equals = a && b && c && d && e && f;
                 if (equals) {
                     if (!(laborRecordsFromPlanfix.get(i).getHours() == laborRecords.get(j).getHours())) {
-                        laborsUpdate.add(laborRecordsFromPlanfix.get(i));
+                        laborRecords.get(j).setHours(laborRecordsFromPlanfix.get(i).getHours());
+                        laborsUpdate.add(laborRecords.get(j));
                     }
                     laborsNotAdd.add(laborRecordsFromPlanfix.get(i));
                     break;
@@ -100,28 +96,26 @@ public class HoursService {
         laborRecordsFromPlanfix.removeAll(laborsNotAdd);
         laborsIdDelete.removeAll(laborsNotAdd);
         laborsIdDelete.removeAll(laborsUpdate);
-        LOGGER.debug("Hours add: {}", laborRecordsFromPlanfix.size());
+        LOGGER.debug("UserHours add: {}", laborRecordsFromPlanfix.size());
         if (laborRecordsFromPlanfix.size() > 0) {
             hoursDao.insertAll(laborRecordsFromPlanfix);
+            hoursDao.insertAllHours(LaborRecordConverter.convertToHours(laborRecordsFromPlanfix));
         }
-        LOGGER.debug("Hours update: {}", laborsUpdate.size());
+        LOGGER.debug("UserHours update: {}", laborsUpdate.size());
         for (LaborRecord laborRecord : laborsUpdate) {
             hoursDao.update(laborRecord);
         }
-        LOGGER.debug("Hours delete: {}", laborsIdDelete.size());
+        for (Hours hours : LaborRecordConverter.convertToHours(laborsUpdate)) {
+            hoursDao.updateHours(hours);
+        }
+        LOGGER.debug("UserHours delete: {}", laborsIdDelete.size());
         for (LaborRecord laborRecord : laborsIdDelete) {
             hoursDao.delete(laborRecord.getId());
         }
-        return hoursDao.getFromDate(now.withDayOfMonth(1), now);
-    }
-
-    private List<LaborRecord> converter(List<PlanfixLaborRecord> planfixLaborRecords) {
-        List<LaborRecord> laborRecords = new ArrayList<>();
-        for (PlanfixLaborRecord planfixLaborRecord : planfixLaborRecords) {
-            planfixLaborRecord.setLocalDateTime();
-            laborRecords.add(new LaborRecord(new User(planfixLaborRecord.getFirstname(), planfixLaborRecord.getLastname()), planfixLaborRecord.getStartTime().toLocalDate(), planfixLaborRecord.getLaborSpan().getHour(), (int) planfixLaborRecord.getTaskId(), planfixLaborRecord.getTaskTitle(), (int) planfixLaborRecord.getProjectId(), planfixLaborRecord.getProjectTitle()));
+        for (Hours hours : LaborRecordConverter.convertToHours(laborsIdDelete)) {
+            hoursDao.deleteHours(hours.getId());
         }
-        return laborRecords;
+        return new EmptyResponse();
     }
 
     public List<LaborRecord> getFromDate(String monthYear) throws ServerException {

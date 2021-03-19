@@ -45,6 +45,8 @@ public enum ErrorCode {
     SPECIALITY_NOT_FOUND("specilaity", "Specilaliyu %s not found"),
     DAY_IN_DOCTOR_SCHEDULE_NOT_FOUND("date", "Day in doctor's schedule not found"),
     PATIENT_BUSY("date time", "Patient is busy at this date and time"),
+    CANT_UPDATE_HOURS("id","Can't update hours"),
+    CANT_DELETE_HOURS("id","Can't delete hours"),
     HTTP_MESSAGE_NOT_READBLE("parameters", "Incorrect parameters"),
     PLANFIX_CANT_GET_USERS("getUsers", "Can't get users rom PlanFix"),
     PLANFIX_CANT_GET_HOURS("getUsers", "Can't get hours rom PlanFix"),

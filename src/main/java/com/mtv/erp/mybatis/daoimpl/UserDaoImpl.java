@@ -77,7 +77,7 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
         LOGGER.debug("DAO get user by id");
         try (SqlSession sqlSession = getSession()) {
             try {
-                return getUserMapper(sqlSession).getByIdWithHours(id, from, to);
+                return getUserMapper(sqlSession).getByIdWithUserHours(id, from, to);
             } catch (RuntimeException e) {
                 LOGGER.debug("Can't get user by id {}", id, e);
                 throw new ServerException(ErrorCode.DATABASE_ERROR);

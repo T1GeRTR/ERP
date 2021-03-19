@@ -12,14 +12,20 @@ public class User {
     private String firstname;
     private String lastname;
     private String email;
-    private List<LaborRecord> hours;
+    private List<Hours> hours;
+    private List<LaborRecord> userHours;
 
-    public User(int id, String firstname, String lastname, String email, List<LaborRecord> hours) {
+    public User(int id, String firstname, String lastname, String email, List<Hours> hours, List<LaborRecord> userHours) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.hours = hours;
+        this.userHours = userHours;
+    }
+
+    public User(int id, String firstname, String lastname, String email, List<Hours> hours) {
+        this(id, firstname, lastname, email, hours, new ArrayList<>());
     }
 
     public User(String firstname, String lastname) {
@@ -65,11 +71,11 @@ public class User {
         this.email = email;
     }
 
-    public List<LaborRecord> getHours() {
+    public List<Hours> getHours() {
         return hours;
     }
 
-    public void setHours(List<LaborRecord> hours) {
+    public void setHours(List<Hours> hours) {
         this.hours = hours;
     }
 
@@ -84,5 +90,13 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getFirstname(), getLastname(), getEmail());
+    }
+
+    public List<LaborRecord> getUserHours() {
+        return userHours;
+    }
+
+    public void setUserHours(List<LaborRecord> userHours) {
+        this.userHours = userHours;
     }
 }
