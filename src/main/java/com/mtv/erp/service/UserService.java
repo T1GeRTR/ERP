@@ -7,6 +7,7 @@ import com.mtv.erp.response.UserGetFromDate;
 import com.mtv.erp.response.UserGetFromDateById;
 import com.mtv.erp.response.UserGetAllDtoResponse;
 import com.mtv.erp.response.planfixResponse.PlanfixUser;
+import com.mtv.erp.utils.LaborRecordConverter;
 import com.mtv.erp.utils.MonthYearConverter;
 import com.mtv.erp.utils.Planfix;
 import org.slf4j.Logger;
@@ -39,6 +40,9 @@ public class UserService {
         List<User> usersIdDelete = new ArrayList<>(users);
         List<User> usersNotAdd = new ArrayList<>();
         for (int i = 0; i < usersFromPf.size(); i++) {
+            if (users.size() == 0) {
+                break;
+            }
             for (int j = 0; j < users.size(); j++) {
                 if (usersFromPf.get(i).getId() == users.get(j).getId()) {
                     if (!usersFromPf.get(i).equals(users.get(j))) {
@@ -82,7 +86,7 @@ public class UserService {
         LocalDate from = LocalDate.of(year, month, 1);
         LocalDate to = (from.getMonthValue() < LocalDate.now().getMonthValue() && from.getYear() <= LocalDate.now().getYear()) ? from.withDayOfMonth(from.lengthOfMonth()) : LocalDate.now();
         for (User user : userDao.getFromDate(from, to)) {
-            getFromDates.add(new UserGetFromDate(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), user.getHours()));
+            getFromDates.add(new UserGetFromDate(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertLaborRecord(user.getHours()), from.lengthOfMonth()));
         }
         return getFromDates;
     }
@@ -93,6 +97,6 @@ public class UserService {
         LocalDate from = LocalDate.of(year, month, 1);
         LocalDate to = (from.getMonthValue() < LocalDate.now().getMonthValue() && from.getYear() <= LocalDate.now().getYear()) ? from.withDayOfMonth(from.lengthOfMonth()) : LocalDate.now();
         User user = userDao.getFromDateById(from, to, id);
-        return new UserGetFromDateById(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), user.getHours());
+        return new UserGetFromDateById(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertLaborRecord(user.getHours()), from.lengthOfMonth());
     }
 }

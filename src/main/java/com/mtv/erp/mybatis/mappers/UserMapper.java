@@ -19,7 +19,7 @@ public interface UserMapper {
     User getById(@Param("id") int id);
 
 
-    @Update({"UPDATE user SET login = #{user.firstname}, firstname = #{user.lastname}, lastname = #{user.email} WHERE id = #{user.id}"})
+    @Update({"UPDATE user SET firstname = #{user.firstname}, lastname = #{user.lastname}, email = #{user.email} WHERE id = #{user.id}"})
     boolean update(@Param("user") User user);
 
     @Delete("UPDATE user SET deleted = 1 WHERE id = #{id}")

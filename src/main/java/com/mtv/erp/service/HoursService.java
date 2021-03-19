@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class HoursService {
@@ -61,7 +62,7 @@ public class HoursService {
             for (int j = 0; j < laborRecordsFromPlanfix.size(); j++) {
                 LaborRecord labor1 = laborRecordsFromPlanfix.get(i);
                 LaborRecord labor2 = laborRecordsFromPlanfix.get(j);
-                if (labor1.getUser().equals(labor2.getUser()) && labor1.getDate() == labor2.getDate() && labor1.getTaskId() == labor2.getTaskId() && labor1.getProjectId() == labor2.getProjectId())
+                if (labor1.getUser().getFirstname().equals(labor2.getUser().getFirstname()) && labor1.getUser().getLastname().equals(labor2.getUser().getLastname()) && labor1.getUser().getEmail().equals(labor2.getUser().getEmail()) && labor1.getDate().equals(labor2.getDate()) && labor1.getTaskId() == labor2.getTaskId() && labor1.getProjectId() == labor2.getProjectId())
                     if (i != j) {
                         if (!(deleteIds.contains(i) || deleteIds.contains(j))) {
                             labor1.setHours(labor1.getHours() + labor2.getHours());
@@ -70,14 +71,25 @@ public class HoursService {
                     }
             }
         }
-        for (int id : deleteIds) {
-            laborRecordsFromPlanfix.remove(id);
+        for (int index : deleteIds) {
+            laborRecordsFromPlanfix.set(index, null);
         }
+        laborRecordsFromPlanfix.removeIf(Objects::isNull);
         for (int i = 0; i < laborRecordsFromPlanfix.size(); i++) {
+            if (laborRecords.size() == 0) {
+                break;
+            }
             for (int j = 0; j < laborRecords.size(); j++) {
-                boolean equals = laborRecordsFromPlanfix.get(i).getProjectId() == laborRecords.get(j).getProjectId() && laborRecordsFromPlanfix.get(i).getTaskId() == laborRecords.get(j).getTaskId() && laborRecordsFromPlanfix.get(i).getDate() == laborRecords.get(j).getDate() && laborRecordsFromPlanfix.get(i).getUser().getId() == laborRecords.get(j).getUser().getId();
+                boolean equals = laborRecordsFromPlanfix.get(i).getProjectId() == laborRecords.get(j).getProjectId() && laborRecordsFromPlanfix.get(i).getTaskId() == laborRecords.get(j).getTaskId() && laborRecordsFromPlanfix.get(i).getDate().equals(laborRecords.get(j).getDate()) && laborRecordsFromPlanfix.get(i).getUser().getFirstname().equals(laborRecords.get(j).getUser().getFirstname()) && laborRecordsFromPlanfix.get(i).getUser().getLastname().equals(laborRecords.get(j).getUser().getLastname()) && laborRecordsFromPlanfix.get(i).getUser().getEmail().equals(laborRecords.get(j).getUser().getEmail());
+                boolean a = laborRecordsFromPlanfix.get(i).getProjectId() == laborRecords.get(j).getProjectId();
+                boolean b = laborRecordsFromPlanfix.get(i).getTaskId() == laborRecords.get(j).getTaskId();
+                boolean c = laborRecordsFromPlanfix.get(i).getDate().equals(laborRecords.get(j).getDate());
+                boolean d = laborRecordsFromPlanfix.get(i).getUser().getFirstname().equals(laborRecords.get(j).getUser().getFirstname());
+                boolean e = laborRecordsFromPlanfix.get(i).getUser().getLastname().equals(laborRecords.get(j).getUser().getLastname());
+                boolean f = laborRecordsFromPlanfix.get(i).getUser().getEmail().equals(laborRecords.get(j).getUser().getEmail());
+                //boolean equals = a && b && c && d && e && f;
                 if (equals) {
-                    if (!laborRecordsFromPlanfix.get(i).equals(laborRecords.get(j))) {
+                    if (!(laborRecordsFromPlanfix.get(i).getHours() == laborRecords.get(j).getHours())) {
                         laborsUpdate.add(laborRecordsFromPlanfix.get(i));
                     }
                     laborsNotAdd.add(laborRecordsFromPlanfix.get(i));

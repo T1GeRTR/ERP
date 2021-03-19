@@ -78,15 +78,11 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return getId() == user.getId() &&
-                Objects.equals(getFirstname(), user.getFirstname()) &&
-                Objects.equals(getLastname(), user.getLastname()) &&
-                Objects.equals(getEmail(), user.getEmail()) &&
-                Objects.equals(getHours(), user.getHours());
+        return getId() == user.getId() && Objects.equals(getFirstname(), user.getFirstname()) && Objects.equals(getLastname(), user.getLastname()) && Objects.equals(getEmail(), user.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstname(), getLastname(), getEmail(), getHours());
+        return Objects.hash(getId(), getFirstname(), getLastname(), getEmail());
     }
 }
