@@ -10,7 +10,12 @@ table {
    width: 100%;
    table-layout: fixed;
     border-collapse: collapse; /* Убираем двойные линии между ячейками */
-   }
+}
+
+table td, input, div{
+    padding:0px;
+    margin:0px;
+}
 
 td, th {
     padding: auto;
@@ -23,6 +28,7 @@ td, th {
 th {
     background: #b0e0e6; /* Цвет фона */
    }
+
 p {
 text-align: center;
 margin: 0;
@@ -39,6 +45,27 @@ Border: none;
 outline: none;
 }
 
-.input-save{
+.input-lower8{
+background-color: #94ffb0;
+}
+
+.input8{
 background-color: #00FF00;
 }
+
+.input-upper8{
+background-color: #009c29;
+}
+
+.tr-hours{
+border-top:2px solid black;
+}
+
+.div-save{
+border: 2px solid #0000FF;
+}
+
+.div-not-save{
+padding: 2px;
+}
+

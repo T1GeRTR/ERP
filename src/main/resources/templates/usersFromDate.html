@@ -17,13 +17,29 @@
                     <p th:utext="${day}">id</p>
                 </td>
             </tr>
-            <tr th:each="user : ${users}">
+            <tr th:each="user : ${users}" class="tr-hours">
                 <td bgcolor="#bfbfbf" th:utext="${user.lastname} + ' ' + ${user.firstname}">...</td>
                 <td th:each="day: ${user.hours}">
-                    <p>
-                        <input  th:value=" ${day.hours}">
-<!--                       <input th:unless="${day.saved}" th:value=" ${day.hours}">-->
-                    </p>
+                    <div class="div-save" th:if="${day.saved}">
+                        <input th:value="${day.hours}"
+                               th:if="${day.hours == 0}">
+                        <input th:value="${day.hours}"
+                               th:if="${day.hours < 8} AND ${day.hours > 0}" class="input-lower8">
+                        <input th:value="${day.hours}"
+                               th:if="${day.hours == 8}" class="input8">
+                        <input th:value="${day.hours}"
+                               th:if="${day.hours > 8}" class="input-upper8">
+                    </div>
+                    <div class="div-not-save" th:if="${not day.saved}">
+                        <input th:value="${day.hours}"
+                               th:if="${day.hours == 0}">
+                        <input th:value="${day.hours}"
+                               th:if="${day.hours < 8} AND ${day.hours > 0}" class="input-lower8">
+                        <input th:value="${day.hours}"
+                               th:if="${day.hours == 8}" class="input8">
+                        <input th:value="${day.hours}"
+                               th:if="${day.hours > 8}" class="input-upper8">
+                    </div>
                 </td>
             </tr>
         </table>
