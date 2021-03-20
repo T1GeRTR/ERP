@@ -13,9 +13,11 @@ import com.mtv.erp.utils.Planfix;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,9 @@ public class UserService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
+    @Scheduled(cron = "0 0 0 * * *")
     public List<UserGetAllDtoResponse> update() throws ServerException {
+        LOGGER.debug("Users UPDATE");
         Planfix planfix = new Planfix();
         List<User> usersFromPf = new ArrayList<>();
         List<PlanfixUser> usersFromPlanfix = planfix.getUsers();

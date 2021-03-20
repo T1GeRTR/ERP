@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>User List</h1>
+<div>
+    <div class="container">
+        <table>
+            <tr>
+                <td bgcolor="#bfbfbf" class="td-name"></td>
+                <td bgcolor="#bfbfbf" th:each="day: ${days}">
+                    <p th:utext="${day}">id</p>
+                </td>
+                <td bgcolor="#bfbfbf" style="font-size: 25px"><p>Σ</p></td>
+            </tr>
+            <tr th:each="user : ${users}" class="tr-hours">
+                <td bgcolor="#bfbfbf" th:utext="${user.lastname} + ' ' + ${user.firstname}">...</td>
+                <td th:each="day: ${user.hours}">
+                    <div class="div-save" th:if="${day.saved}">
+                        <input type="number" th:value="${day.hours}"
+                               th:if="${day.hours == 0}">
+                        <input type="number" th:value="${day.hours}"
+                               th:if="${day.hours < 8} AND ${day.hours > 0}" class="input-lower8">
+                        <input type="number" th:value="${day.hours}"
+                               th:if="${day.hours == 8}" class="input8">
+                        <input type="number" th:value="${day.hours}"
+                               th:if="${day.hours > 8}" class="input-upper8">
+                    </div>
+                    <div class="div-not-save" th:if="${not day.saved}">
+                        <input type="number" th:value="${day.hours}"
+                               th:if="${day.hours == 0}">
+                        <input type="number" th:value="${day.hours}"
+                               th:if="${day.hours < 8} AND ${day.hours > 0}" class="input-lower8">
+                        <input type="number" th:value="${day.hours}"
+                               th:if="${day.hours == 8}" class="input8">
+                        <input type="number" th:value="${day.hours}"
+                               th:if="${day.hours > 8}" class="input-upper8">
+                    </div>
+                </td>
+                <td bgcolor="#bfbfbf" th:utext="${user.sumHours}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

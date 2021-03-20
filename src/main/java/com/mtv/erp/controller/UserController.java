@@ -1,7 +1,7 @@
 package com.mtv.erp.controller;
 
 import com.mtv.erp.exception.ServerException;
-import com.mtv.erp.response.UserGetFromDateDtoResponse;
+import com.mtv.erp.response.UsersGetFromDateDtoResponse;
 import com.mtv.erp.service.UserService;
 import com.mtv.erp.utils.MonthYearConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,7 @@ public class UserController {
         for (int i = 0; i < LocalDate.now().lengthOfMonth(); i++) {
             daysOfMonth.add(i + 1);
         }
-        List<UserGetFromDateDtoResponse> list = userService.getFromDate(monthYear);
-        model.addAttribute("users", list);
+        model.addAttribute("users", new UsersGetFromDateDtoResponse(userService.getFromDate(monthYear)));
         model.addAttribute("days", daysOfMonth);
         model.addAttribute("month", MonthYearConverter.getMonth(monthYear));
         model.addAttribute("year", MonthYearConverter.getYear(monthYear));
@@ -46,7 +45,7 @@ public class UserController {
         for (int i = 0; i < LocalDate.now().lengthOfMonth(); i++) {
             daysOfMonth.add(i + 1);
         }
-        model.addAttribute("users", userService.getFromDateById(id, monthYear));
+        model.addAttribute("user", userService.getFromDateById(id, monthYear));
         model.addAttribute("days", daysOfMonth);
         model.addAttribute("month", MonthYearConverter.getMonth(monthYear));
         model.addAttribute("year", MonthYearConverter.getYear(monthYear));
@@ -57,5 +56,11 @@ public class UserController {
     String update(Model model) throws ServerException {
         model.addAttribute("users", userService.update());
         return "users";
+    }
+
+    @RequestMapping(value = {"/user"}, method = RequestMethod.POST)
+    void saveUsersHour(Model model, @ModelAttribute("SpringWeb") UsersGetFromDateDtoResponse users) {
+        System.out.println("!!!!!" + users.getUserList().size());
+        System.out.println("!!!!!" + users.getUserList().get(0).getHours().get(0).getHours());
     }
 }

@@ -15,6 +15,7 @@ import com.mtv.erp.utils.Planfix;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -33,7 +34,9 @@ public class HoursService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HoursService.class);
 
+    @Scheduled(cron = "0 0 1 * * *")
     public EmptyResponse update() throws ServerException {
+        LOGGER.debug("Hours UPDATE");
         Planfix planfix = new Planfix();
         LocalDate now = LocalDate.now();
         LocalDate from;

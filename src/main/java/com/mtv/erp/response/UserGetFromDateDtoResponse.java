@@ -11,6 +11,7 @@ public class UserGetFromDateDtoResponse {
     private String email;
     private List<HoursGetUserDtoResponse> hours;
     private int monthLen;
+    private int sumHours;
 
     public UserGetFromDateDtoResponse(int id, String firstname, String lastname, String email, List<HoursGetUserDtoResponse> hours, int monthLen) {
         this.id = id;
@@ -19,6 +20,11 @@ public class UserGetFromDateDtoResponse {
         this.email = email;
         this.hours = hours;
         this.monthLen = monthLen;
+        setSumHours();
+    }
+
+    public UserGetFromDateDtoResponse() {
+
     }
 
     public int getId() {
@@ -85,5 +91,15 @@ public class UserGetFromDateDtoResponse {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getFirstname(), getLastname(), getEmail(), getHours(), getMonthLen());
+    }
+
+    public int getSumHours() {
+        return sumHours;
+    }
+
+    private void setSumHours() {
+        for (HoursGetUserDtoResponse hours : hours) {
+            sumHours += hours.getHours();
+        }
     }
 }
