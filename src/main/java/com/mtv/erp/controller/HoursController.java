@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.PostConstruct;
-
 @RestController
 public class HoursController {
 
@@ -20,7 +18,7 @@ public class HoursController {
     @Autowired
     private UserService userService;
 
-    @PostConstruct
+    //@PostConstruct
     @RequestMapping(value = {"/hours/update"}, method = RequestMethod.GET)
     EmptyResponse update() throws ServerException {
         userService.update();
