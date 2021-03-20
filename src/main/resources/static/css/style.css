@@ -1,37 +1,52 @@
 h1 {
-    color:#0000FF;
+    color: #0000FF;
 }
 
 h2 {
-    color:#FF0000;
+    color: #FF0000;
 }
 
 table {
-   width: 100%;
-   table-layout: fixed;
-    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    /* Убираем двойные линии между ячейками */
 }
 
-table td, input, div{
-    padding:0px;
-    margin:0px;
+.table-hours {
+    background-image: url(/img/iStock.jpg);
+    padding-top: 130px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-td, th {
+table td,
+input,
+div {
+    padding: 0px;
+    margin: 0px;
+}
+
+td,
+th {
     padding: auto;
     text-align: center;
     width: 100%;
-    padding: 3px; /* Поля вокруг содержимого таблицы */
-    border: 1px solid black; /* Параметры рамки */
+    padding: 3px;
+    /* Поля вокруг содержимого таблицы */
+    border: 1px solid black;
+    /* Параметры рамки */
 }
 
 th {
-    background: #b0e0e6; /* Цвет фона */
-   }
+    background: #b0e0e6;
+    /* Цвет фона */
+}
 
 p {
-text-align: center;
-margin: 0;
+    text-align: center;
+    margin: 0;
 }
 
 .td-name {
@@ -43,40 +58,57 @@ margin: 0;
     font-size: 20px;
 }
 
-input{
-text-align: center;
-width: 100%;
-Border: none;
-outline: none;
+input {
+    text-align: center;
+    width: 100%;
+    Border: none;
+    outline: none;
+    height: 25px;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-.input-lower8{
-background-color: #94ffb0;
+.input-lower8 {
+    background-color: #94ffb0;
 }
 
-.input8{
-background-color: #00FF00;
+.input8 {
+    background-color: #00FF00;
 }
 
-.input-upper8{
-background-color: #009c29;
+.input-upper8 {
+    background-color: #009c29;
 }
 
-.tr-hours{
-border-top:2px solid black;
+.tr-hours {
+    border-top: 2px solid black;
 }
 
-.div-save{
-border: 2px solid #0000FF;
+.div-save {
+    border: 2px solid #0000FF;
 }
 
-.div-not-save{
-padding: 2px;
+.div-not-save {
+    padding: 2px;
 }
 
+.submit{
+    background-color: #e2e6e691;
+    background-image: url(/img/save.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+    width: 70px;
+    height: 70px;
+    border: none;;
+    padding: 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 12px;
+}
