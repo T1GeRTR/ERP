@@ -3,6 +3,9 @@ package com.mtv.erp.utils;
 import com.mtv.erp.model.Hours;
 import com.mtv.erp.model.LaborRecord;
 import com.mtv.erp.model.User;
+import com.mtv.erp.request.HoursGetUserDtoRequest;
+import com.mtv.erp.request.UserGetFromDateDtoRequest;
+import com.mtv.erp.request.UsersGetFromDateDtoRequest;
 import com.mtv.erp.response.HoursGetUserDtoResponse;
 import com.mtv.erp.response.UserHoursGetUserDtoResponse;
 import com.mtv.erp.response.planfixResponse.PlanfixLaborRecord;
@@ -26,15 +29,15 @@ public class LaborRecordConverter {
     public static List<HoursGetUserDtoResponse> convertHours(List<Hours> hours) {
         List<HoursGetUserDtoResponse> list = new ArrayList<>();
         for (Hours hour : hours) {
-                list.add(new HoursGetUserDtoResponse(hour.getId(), hour.getUser(), hour.getDate(), hour.getHours(), hour.isSaved()));
+            list.add(new HoursGetUserDtoResponse(hour.getId(), hour.getUser(), hour.getDate(), hour.getHours(), hour.isSaved()));
         }
         return list;
     }
 
-    public static List<Hours> convertHours(List<Hours> hours, LocalDate date) {
+    public static List<Hours> convertHours(List<Hours> hours, LocalDate date, User user) {
         Hours[] monthHours = new Hours[date.lengthOfMonth()];
         for (int i = 0; i < monthHours.length; i++) {
-            monthHours[i] = new Hours(0, LocalDate.of(date.getYear(), date.getMonth(), i + 1), null);
+            monthHours[i] = new Hours(0, LocalDate.of(date.getYear(), date.getMonth(), i + 1), user);
         }
         if (hours.size() == 0) {
             return Arrays.asList(monthHours);
@@ -89,5 +92,17 @@ public class LaborRecordConverter {
             laborRecords.add(new LaborRecord(new User(planfixLaborRecord.getFirstname(), planfixLaborRecord.getLastname()), planfixLaborRecord.getStartTime().toLocalDate(), planfixLaborRecord.getLaborSpan().getHour(), (int) planfixLaborRecord.getTaskId(), planfixLaborRecord.getTaskTitle(), (int) planfixLaborRecord.getProjectId(), planfixLaborRecord.getProjectTitle()));
         }
         return laborRecords;
+    }
+
+    public static List<Hours> convertChangeHours(UsersGetFromDateDtoRequest request) {
+        List<Hours> hourList = new ArrayList<>();
+        for (UserGetFromDateDtoRequest user : request.getUserList()) {
+            for (HoursGetUserDtoRequest hours : user.getHours()) {
+                if (hours.getId() != 0 || hours.getHours() != 0) {
+                    hourList.add(new Hours(hours.getId(), hours.getUser(), hours.getDate(), hours.getHours()));
+                }
+            }
+        }
+        return hourList;
     }
 }

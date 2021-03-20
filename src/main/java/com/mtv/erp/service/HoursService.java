@@ -6,7 +6,11 @@ import com.mtv.erp.exception.ServerException;
 import com.mtv.erp.model.Hours;
 import com.mtv.erp.model.LaborRecord;
 import com.mtv.erp.model.User;
+import com.mtv.erp.request.HoursGetUserDtoRequest;
+import com.mtv.erp.request.UserGetFromDateDtoRequest;
+import com.mtv.erp.request.UsersGetFromDateDtoRequest;
 import com.mtv.erp.response.EmptyResponse;
+import com.mtv.erp.response.HoursGetUserDtoResponse;
 import com.mtv.erp.response.UserGetFromDateDtoResponse;
 import com.mtv.erp.response.planfixResponse.PlanfixLaborRecord;
 import com.mtv.erp.utils.LaborRecordConverter;
@@ -127,6 +131,22 @@ public class HoursService {
         LocalDate from = LocalDate.of(year, month, 1);
         LocalDate to = (from.getMonthValue() < LocalDate.now().getMonthValue() && from.getYear() <= LocalDate.now().getYear()) ? from.withDayOfMonth(from.lengthOfMonth()) : LocalDate.now();
         return hoursDao.getFromDate(from, to);
+    }
+
+    public boolean saveChanges(UsersGetFromDateDtoRequest request, List<HoursGetUserDtoResponse> oldHours) throws ServerException {
+        List<Hours> hours = LaborRecordConverter.convertChangeHours(request);
+        for (Hours elem: hours) {
+            for (HoursGetUserDtoResponse old: oldHours){
+                if(elem.getId() == old.getId() && elem.getHours() != old.getHours()){
+                    hoursDao.saveChanges(elem);
+                    break;
+                }
+            }
+            if(elem.getId() == 0 && elem.getHours() != 0){
+                hoursDao.insertChanges(elem);
+            }
+        }
+        return true;
     }
 
 

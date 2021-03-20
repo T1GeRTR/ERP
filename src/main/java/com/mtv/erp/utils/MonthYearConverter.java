@@ -9,11 +9,8 @@ public class MonthYearConverter {
 
     public static int getMonth(String monthYear) throws ServerException {
         int month;
-        if (monthYear.matches("-")) {
-            month = Integer.parseInt(splitString(monthYear)[0]);
-        } else {
-            month = Integer.parseInt(monthYear);
-        }
+        String[] split = splitString(monthYear);
+        month = Integer.parseInt(split[0]);
         if (month > 12) {
             throw new ServerException(ErrorCode.INVALID_MONTH);
         }
@@ -22,8 +19,9 @@ public class MonthYearConverter {
 
     public static int getYear(String monthYear) throws ServerException {
         int year;
-        if (monthYear.matches("-")) {
-            year = Integer.parseInt(splitString(monthYear)[1]);
+        String[] split = splitString(monthYear);
+        if (split.length == 2) {
+            year = Integer.parseInt(split[1]);
         } else {
             year = LocalDate.now().getYear();
         }
@@ -35,7 +33,7 @@ public class MonthYearConverter {
 
     private static String[] splitString(String monthYear) throws ServerException {
         String[] array = monthYear.split("-");
-        if (array.length < 2) {
+        if (array.length > 2) {
             throw new ServerException(ErrorCode.INVALID_MONTH_YEAR);
         }
         return array;

@@ -54,8 +54,15 @@ public interface HoursMapper {
     @Update({"UPDATE user_hours SET hours = #{elem.hours} WHERE id = #{elem.id}"})
     Integer update(@Param("elem") LaborRecord laborRecord);
 
-    @Update({"UPDATE hours SET hours = #{elem.hours} WHERE id = #{elem.id}"})
+    @Update({"UPDATE hours SET hours = #{elem.hours} WHERE id = #{elem.id} AND saved = 0"})
     Integer updateHours(@Param("elem") Hours hours);
+
+    @Update({"UPDATE hours SET hours = #{elem.hours}, saved = 1 WHERE id = #{elem.id}"})
+    Integer saveChanges(@Param("elem") Hours hours);
+
+//    INSERT INTO hours (id, userId, date, hours, saved) VALUES (9000, 6257958, '2000-01-01', 8, 1)
+    @Update({"INSERT INTO hours (id, userId, date, hours, saved) VALUES ('1' + (SELECT max(b.id) From hours as a left join hours as b on a.id = b.id),#{hours.user.id}, #{hours.date}, #{hours.hours}, 1)"})
+    Integer insertChanges(@Param("hours") Hours hours);
 
     @Select({"SELECT id, userId, date, hours, taskId, taskTitle, projectId, projectTitle FROM user_hours WHERE date BETWEEN #{from} AND #{to} AND NOT deleted = 1 ORDER BY date"})
     @Results({

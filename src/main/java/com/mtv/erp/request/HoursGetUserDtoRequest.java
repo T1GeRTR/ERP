@@ -1,38 +1,28 @@
-package com.mtv.erp.model;
+package com.mtv.erp.request;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mtv.erp.model.User;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Hours {
+@JsonIgnoreProperties(value = "handler")
+public class HoursGetUserDtoRequest {
     private int id;
     private User user;
     private LocalDate date;
     private int hours;
     private boolean saved;
 
-    public Hours(int id, User user, LocalDate date, int hours, boolean saved) {
+    public HoursGetUserDtoRequest() {
+    }
+
+    public HoursGetUserDtoRequest(int id, User user, LocalDate date, int hours, boolean saved) {
         this.id = id;
         this.user = user;
         this.date = date;
         this.hours = hours;
         this.saved = saved;
-    }
-
-    public Hours(int id, User user, LocalDate date, int hours) {
-        this(id, user, date, hours, false);
-    }
-
-    public Hours(){
-    }
-
-    public Hours(int hours, LocalDate date, User user){
-        setHours(hours);
-        setDate(date);
-        setUser(user);
-    }
-
-    public Hours(int id, int hours){
-        this(id, null, null, hours);
     }
 
     public int getId() {
@@ -67,7 +57,7 @@ public class Hours {
         this.hours = hours;
     }
 
-    public boolean isSaved() {
+    public boolean getSaved() {
         return saved;
     }
 
@@ -78,17 +68,17 @@ public class Hours {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Hours)) return false;
-        Hours hours1 = (Hours) o;
-        return getId() == hours1.getId() &&
-                getHours() == hours1.getHours() &&
-                isSaved() == hours1.isSaved() &&
-                Objects.equals(getUser(), hours1.getUser()) &&
-                Objects.equals(getDate(), hours1.getDate());
+        if (!(o instanceof HoursGetUserDtoRequest)) return false;
+        HoursGetUserDtoRequest that = (HoursGetUserDtoRequest) o;
+        return getId() == that.getId() &&
+                getHours() == that.getHours() &&
+                getSaved() == that.getSaved() &&
+                Objects.equals(getUser(), that.getUser()) &&
+                Objects.equals(getDate(), that.getDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getUser(), getDate(), getHours(), isSaved());
+        return Objects.hash(getId(), getUser(), getDate(), getHours(), getSaved());
     }
 }

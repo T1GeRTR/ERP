@@ -1,7 +1,13 @@
 package com.mtv.erp.controller;
 
 import com.mtv.erp.exception.ServerException;
+import com.mtv.erp.request.HoursGetUserDtoRequest;
+import com.mtv.erp.request.UserGetFromDateDtoRequest;
+import com.mtv.erp.request.UsersGetFromDateDtoRequest;
+import com.mtv.erp.response.HoursGetUserDtoResponse;
+import com.mtv.erp.response.UserGetFromDateDtoResponse;
 import com.mtv.erp.response.UsersGetFromDateDtoResponse;
+import com.mtv.erp.service.HoursService;
 import com.mtv.erp.service.UserService;
 import com.mtv.erp.utils.MonthYearConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +25,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private HoursService hoursService;
 
     @RequestMapping(value = {"/user"}, method = RequestMethod.GET)
     public String getAll(Model model) throws ServerException {
@@ -58,9 +67,22 @@ public class UserController {
         return "users";
     }
 
-    @RequestMapping(value = {"/user"}, method = RequestMethod.POST)
-    void saveUsersHour(Model model, @ModelAttribute("SpringWeb") UsersGetFromDateDtoResponse users) {
-        System.out.println("!!!!!" + users.getUserList().size());
-        System.out.println("!!!!!" + users.getUserList().get(0).getHours().get(0).getHours());
+    @RequestMapping(value = {"/user/{monthYear}"}, method = RequestMethod.POST)
+    String saveUsersHour(Model model, @ModelAttribute("SpringWeb") UsersGetFromDateDtoRequest users, @PathVariable("monthYear") String monthYear) throws ServerException {
+        userService.getFromDate(monthYear);
+        List<HoursGetUserDtoResponse> oldHours = new ArrayList<>();
+        for (UserGetFromDateDtoResponse user : userService.getFromDate(monthYear)) {
+            oldHours.addAll(user.getHours());
+        }
+        hoursService.saveChanges(users, oldHours);
+        List<Integer> daysOfMonth = new ArrayList<>();
+        for (int i = 0; i < LocalDate.now().lengthOfMonth(); i++) {
+            daysOfMonth.add(i + 1);
+        }
+        model.addAttribute("users", new UsersGetFromDateDtoResponse(userService.getFromDate(monthYear)));
+        model.addAttribute("days", daysOfMonth);
+        model.addAttribute("month", MonthYearConverter.getMonth(monthYear));
+        model.addAttribute("year", MonthYearConverter.getYear(monthYear));
+        return "usersFromDate";
     }
 }

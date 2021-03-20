@@ -90,7 +90,7 @@ public class UserService {
         LocalDate from = LocalDate.of(year, month, 1);
         LocalDate to = (from.getMonthValue() < LocalDate.now().getMonthValue() && from.getYear() <= LocalDate.now().getYear()) ? from.withDayOfMonth(from.lengthOfMonth()) : LocalDate.now();
         for (User user : userDao.getFromDate(from, to)) {
-            getFromDates.add(new UserGetFromDateDtoResponse(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertHours(LaborRecordConverter.convertHours(user.getHours(), from)), from.lengthOfMonth()));
+            getFromDates.add(new UserGetFromDateDtoResponse(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertHours(LaborRecordConverter.convertHours(user.getHours(), from, user)), from.lengthOfMonth()));
         }
         return getFromDates;
     }
@@ -101,6 +101,6 @@ public class UserService {
         LocalDate from = LocalDate.of(year, month, 1);
         LocalDate to = (from.getMonthValue() < LocalDate.now().getMonthValue() && from.getYear() <= LocalDate.now().getYear()) ? from.withDayOfMonth(from.lengthOfMonth()) : LocalDate.now();
         User user = userDao.getFromDateById(from, to, id);
-        return new UserGetFromDateByIdDtoResponse(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertLaborRecord(user.getUserHours()), LaborRecordConverter.convertHours(LaborRecordConverter.convertHours(user.getHours(), from)), from.lengthOfMonth());
+        return new UserGetFromDateByIdDtoResponse(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertLaborRecord(user.getUserHours()), LaborRecordConverter.convertHours(LaborRecordConverter.convertHours(user.getHours(), from, user)), from.lengthOfMonth());
     }
 }

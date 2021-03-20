@@ -138,4 +138,36 @@ public class HoursDaoImpl extends DaoImplBase implements HoursDao {
         }
         return true;
     }
+
+    @Override
+    public boolean saveChanges(Hours hours) throws ServerException {
+        LOGGER.debug("DAO save changed hours");
+        try (SqlSession sqlSession = getSession()) {
+            try {
+                getHoursMapper(sqlSession).saveChanges(hours);
+            } catch (RuntimeException e) {
+                LOGGER.debug("Can't save changed hours {}", hours, e);
+                sqlSession.rollback();
+                throw new ServerException(ErrorCode.CANT_UPDATE_HOURS);
+            }
+            sqlSession.commit();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean insertChanges(Hours hours) throws ServerException {
+        LOGGER.debug("DAO insert changed hours");
+        try (SqlSession sqlSession = getSession()) {
+            try {
+                getHoursMapper(sqlSession).insertChanges(hours);
+            } catch (RuntimeException e) {
+                LOGGER.debug("Can't insert changed hours {}", hours, e);
+                sqlSession.rollback();
+                throw new ServerException(ErrorCode.CANT_UPDATE_HOURS);
+            }
+            sqlSession.commit();
+        }
+        return true;
+    }
 }

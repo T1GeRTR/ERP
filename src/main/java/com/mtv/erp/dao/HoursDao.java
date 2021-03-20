@@ -23,4 +23,8 @@ public interface HoursDao {
     boolean update(LaborRecord laborRecord) throws ServerException;
 
     boolean updateHours(Hours hours) throws ServerException;
+
+    boolean saveChanges(Hours hours) throws ServerException;
+
+    boolean insertChanges(Hours hours) throws ServerException;
 }
