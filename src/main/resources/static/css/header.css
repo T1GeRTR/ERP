@@ -52,6 +52,10 @@ a {
     font-weight: 400;
 }
 
+a {
+    text-decoration: none;
+}
+
 p {
     margin: 0 auto;
     line-height: 1.64em;
