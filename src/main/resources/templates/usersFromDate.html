@@ -8,90 +8,12 @@
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" href="/css/bootstrap.css">
     <link th:href="@{/css/header.css}" rel="stylesheet" href="/css/header.css">
     <link th:href="@{/css/style.css}" rel="stylesheet" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
 <body>
 <div th:insert="~{header :: header}"></div>
-<div class="table-hours">
-    <div class="container">
-        <table>
-            <tr>
-                <td class="td-left"></td>
-                <td bgcolor="#bfbfbf" th:each="dayOfWeek: ${weeks}">
-                    <p th:utext="${dayOfWeek}" th:class="${dayOfWeek == 'СБ'} OR ${dayOfWeek == 'ВС'}? weekEnd"></p>
-                </td>
-                <td class="td-right"></td>
-            </tr>
-            <tr>
-                <td bgcolor="#bfbfbf" class="td-name"></td>
-                <td bgcolor="#bfbfbf" th:each="day: ${days}">
-                    <p th:utext="${day}"></p>
-                </td>
-                <td bgcolor="#bfbfbf" style="font-size: 25px">
-                    <p>Σ</p>
-                </td>
-            </tr>
-            <form name="hours" action="#" th:action="@{/user/{month}-{year}(month=${month},year=${year})}"
-                  th:object="${users}" method="post" onsubmit="return false;">
-                <tr th:each="user, itemStat : *{userList}" class="tr-hours">
-                    <td bgcolor="#bfbfbf" th:utext="${user.lastname} + ' ' + ${user.firstname}">...</td>
-                    <td th:each="day, itemStat1 : *{userList[__${itemStat.index}__].hours}">
-                        <input type="hidden"
-                               th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].id}">
-                        <input type="hidden"
-                               th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].user.id}">
-                        <input type="hidden"
-                               th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].date}">
-                        <div class="div-save" th:if="${day.saved}">
-                            <input type="number"
-                                   th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
-                                   th:if="${day.hours == 0}" class="input">
-                            <input type="number"
-                                   th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
-                                   th:if="${day.hours < 8} AND ${day.hours > 0}"
-                                   class="input-lower8 input">
-                            <input type="number"
-                                   th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
-                                   th:if="${day.hours == 8}" class="input8 input">
-                            <input type="number"
-                                   th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
-                                   th:if="${day.hours > 8}" class="input-upper8 input">
-                        </div>
-                        <div class="div-not-save" th:if="${not day.saved}">
-                            <input type="number"
-                                   th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
-                                   th:if="${day.hours == 0}" class="input">
-                            <input type="number"
-                                   th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
-                                   th:if="${day.hours < 8} AND ${day.hours > 0}"
-                                   class="input-lower8 input">
-                            <input type="number"
-                                   th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
-                                   th:if="${day.hours == 8}" class="input8 input">
-                            <input type="number"
-                                   th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
-                                   th:if="${day.hours > 8}" class="input-upper8 input">
-                        </div>
-                    </td>
-                    <td bgcolor="#bfbfbf"><input th:value="${user.sumHours}" class="sum" readonly></td>
-                </tr>
-                <script type="text/javascript">
-                                var inputs = document.getElementsByClassName('input');
-                                var sums = document.getElementsByClassName('sum');
-                                for(let i = 0; i < inputs.length; i++){
-                                    inputs[i].value = (inputs[i].value==Math.round(inputs[i].value)) ? Math.round(inputs[i].value): Math.round(inputs[i].value*Math.pow(10,1))/Math.pow(10,1);
-                                    inputs[i].value = (inputs[i].value>10)?Math.round(inputs[i].value):inputs[i].value;
-                                }
-                                console.log(sums.length);
-                                for(let i = 0; i < sums.length; i++){
-                                    sums[i].value = (sums[i].value==Math.round(sums[i].value)) ? Math.round(sums[i].value): Math.round(sums[i].value*Math.pow(10,1))/Math.pow(10,1);
-                                }
-                 </script>
-            </form>
-        </table>
-        <input type="button" class="submit" onclick="document.forms['hours'].submit();">
-    </div>
-</div>
+<div th:insert="~{tableUsers :: tableUsers}"></div>
 </body>
 
 </html>

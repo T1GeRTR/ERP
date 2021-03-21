@@ -92,7 +92,12 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
             try {
                 List<User> users = new ArrayList<>();
                 for (User user : getUserMapper(sqlSession).getAll()) {
-                    users.add(getUserMapper(sqlSession).getByIdWithHours(user.getId(), from, to));
+                    User userFromBase = getUserMapper(sqlSession).getByIdWithHours(user.getId(), from, to);
+                    if(userFromBase!=null){
+                        users.add(userFromBase);
+                    }else {
+                        users.add(user);
+                    }
                 }
                 return users;
             } catch (RuntimeException e) {

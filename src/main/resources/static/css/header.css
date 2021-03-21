@@ -73,6 +73,10 @@ li {
     margin: 0 auto;
 }
 
+.logo{
+    margin-left:40px;
+}
+
 .header {
     position: fixed;
     width: 100%;
@@ -114,5 +118,5 @@ height: 50px;
 
 .social {
 display: flex;
+margin-right:40px;
 }
-

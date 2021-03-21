@@ -36,22 +36,6 @@ public class UserController {
         return "users";
     }
 
-    @RequestMapping(value = {"/user/{monthYear}"}, method = RequestMethod.GET)
-    String getFromDate(@PathVariable("monthYear") String monthYear, Model model) throws ServerException {
-        List<Integer> daysOfMonth = new ArrayList<>();
-        List<String> daysOfWeek = new ArrayList<>();
-        for (int i = 0; i < LocalDate.now().lengthOfMonth(); i++) {
-            daysOfMonth.add(i + 1);
-            daysOfWeek.add(DayOfWeek.getDay(LocalDate.of(MonthYearConverter.getYear(monthYear), MonthYearConverter.getMonth(monthYear), i+1).getDayOfWeek()).getDay());
-        }
-        model.addAttribute("users", new UsersGetFromDateDtoResponse(userService.getFromDate(monthYear)));
-        model.addAttribute("days", daysOfMonth);
-        model.addAttribute("weeks", daysOfWeek);
-        model.addAttribute("month", MonthYearConverter.getMonth(monthYear));
-        model.addAttribute("year", MonthYearConverter.getYear(monthYear));
-        return "usersFromDate";
-    }
-
     @RequestMapping(value = {"/user/id/{monthYear}"}, method = RequestMethod.GET)
     String getFromDateById(@PathVariable("id") int id, @PathVariable("monthYear") String monthYear, Model model) throws ServerException {
         List<Integer> daysOfMonth = new ArrayList<>();

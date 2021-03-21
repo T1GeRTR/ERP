@@ -40,7 +40,7 @@ public class LaborRecordConverter {
         for (int i = 0; i < monthHours.length; i++) {
             monthHours[i] = new Hours(0, LocalDate.of(date.getYear(), date.getMonth(), i + 1), user);
         }
-        if (hours.size() == 0) {
+        if (hours == null || hours.size() == 0) {
             return Arrays.asList(monthHours);
         }
         for (Hours elem : hours) {
