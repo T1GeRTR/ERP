@@ -11,13 +11,13 @@ public class HoursGetUserDtoRequest {
     private int id;
     private User user;
     private LocalDate date;
-    private int hours;
+    private float hours;
     private boolean saved;
 
     public HoursGetUserDtoRequest() {
     }
 
-    public HoursGetUserDtoRequest(int id, User user, LocalDate date, int hours, boolean saved) {
+    public HoursGetUserDtoRequest(int id, User user, LocalDate date, float hours, boolean saved) {
         this.id = id;
         this.user = user;
         this.date = date;
@@ -49,11 +49,11 @@ public class HoursGetUserDtoRequest {
         this.date = date;
     }
 
-    public int getHours() {
+    public float getHours() {
         return hours;
     }
 
-    public void setHours(int hours) {
+    public void setHours(float hours) {
         this.hours = hours;
     }
 

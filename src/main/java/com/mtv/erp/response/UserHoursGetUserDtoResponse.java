@@ -11,7 +11,7 @@ public class UserHoursGetUserDtoResponse {
     private int id;
     private User user;
     private LocalDate date;
-    private int hours;
+    private float hours;
     private String taskId;
     private String taskTitle;
     private String projectId;
@@ -20,7 +20,7 @@ public class UserHoursGetUserDtoResponse {
     public UserHoursGetUserDtoResponse() {
     }
 
-    public UserHoursGetUserDtoResponse(int id, User user, LocalDate date, int hours, String taskId, String taskTitle, String projectId, String projectTitle) {
+    public UserHoursGetUserDtoResponse(int id, User user, LocalDate date, float hours, String taskId, String taskTitle, String projectId, String projectTitle) {
         this.id = id;
         this.user = user;
         this.date = date;
@@ -55,11 +55,11 @@ public class UserHoursGetUserDtoResponse {
         this.date = date;
     }
 
-    public int getHours() {
+    public float getHours() {
         return hours;
     }
 
-    public void setHours(int hours) {
+    public void setHours(float hours) {
         this.hours = hours;
     }
 

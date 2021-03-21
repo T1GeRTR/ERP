@@ -10,7 +10,7 @@ public class LaborRecord {
     private int id;
     private User user;
     private LocalDate date;
-    private int hours;
+    private float hours;
     private int taskId;
     private String taskTitle;
     private int projectId;
@@ -19,7 +19,7 @@ public class LaborRecord {
     public LaborRecord() {
     }
 
-    public LaborRecord(int id, User user, LocalDate date, int hours, int taskId, String taskTitle, int projectId, String projectTitle) {
+    public LaborRecord(int id, User user, LocalDate date, float hours, int taskId, String taskTitle, int projectId, String projectTitle) {
         this.id = id;
         this.user = user;
         this.date = date;
@@ -30,7 +30,7 @@ public class LaborRecord {
         this.projectTitle = projectTitle;
     }
 
-    public LaborRecord(User user, LocalDate date, int hours, int taskId, String taskTitle, int projectId, String projectTitle) {
+    public LaborRecord(User user, LocalDate date, float hours, int taskId, String taskTitle, int projectId, String projectTitle) {
         this(0, user, date, hours, taskId, taskTitle, projectId, projectTitle);
     }
 
@@ -58,11 +58,11 @@ public class LaborRecord {
         this.date = date;
     }
 
-    public int getHours() {
+    public float getHours() {
         return hours;
     }
 
-    public void setHours(int hours) {
+    public void setHours(float hours) {
         this.hours = hours;
     }
 

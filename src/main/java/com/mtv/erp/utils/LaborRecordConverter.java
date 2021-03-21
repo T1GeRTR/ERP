@@ -11,6 +11,7 @@ import com.mtv.erp.response.UserHoursGetUserDtoResponse;
 import com.mtv.erp.response.planfixResponse.PlanfixLaborRecord;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -89,7 +90,9 @@ public class LaborRecordConverter {
         List<LaborRecord> laborRecords = new ArrayList<>();
         for (PlanfixLaborRecord planfixLaborRecord : planfixLaborRecords) {
             planfixLaborRecord.setLocalDateTime();
-            laborRecords.add(new LaborRecord(new User(planfixLaborRecord.getFirstname(), planfixLaborRecord.getLastname()), planfixLaborRecord.getStartTime().toLocalDate(), planfixLaborRecord.getLaborSpan().getHour(), (int) planfixLaborRecord.getTaskId(), planfixLaborRecord.getTaskTitle(), (int) planfixLaborRecord.getProjectId(), planfixLaborRecord.getProjectTitle()));
+            LocalTime time = planfixLaborRecord.getLaborSpan();
+            float hours = (float)planfixLaborRecord.getLaborSpan().getHour() + (float)planfixLaborRecord.getLaborSpan().getMinute()/60;
+            laborRecords.add(new LaborRecord(new User(planfixLaborRecord.getFirstname(), planfixLaborRecord.getLastname()), planfixLaborRecord.getStartTime().toLocalDate(), (float)planfixLaborRecord.getLaborSpan().getHour() + (float)planfixLaborRecord.getLaborSpan().getMinute()/60, (int) planfixLaborRecord.getTaskId(), planfixLaborRecord.getTaskTitle(), (int) planfixLaborRecord.getProjectId(), planfixLaborRecord.getProjectTitle()));
         }
         return laborRecords;
     }

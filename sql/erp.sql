@@ -107,3 +107,6 @@ KEY `hours`(date),
 KEY saved(saved),
 KEY deleted(deleted)
 )ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+INSERT INTO user (id, firstname, lastname, email, deleted) VALUES (1, 'firstname', 'lastname', 'email', 1);
+INSERT INTO hours (id, userId, date, hours, saved) VALUES (900000000, 1, '2000-01-01', 8, 1);

@@ -12,7 +12,7 @@ public class UserGetFromDateByIdDtoResponse {
     private List<UserHoursGetUserDtoResponse> userHours;
     private List<HoursGetUserDtoResponse> hours;
     private int monthLen;
-    private int sumHours;
+    private float sumHours;
 
     public UserGetFromDateByIdDtoResponse(int id, String firstname, String lastname, String email, List<UserHoursGetUserDtoResponse> userHours, List<HoursGetUserDtoResponse> hours, int monthLen) {
         this.id = id;
@@ -100,7 +100,7 @@ public class UserGetFromDateByIdDtoResponse {
         return Objects.hash(getId(), getFirstname(), getLastname(), getEmail(), getUserHours(), getHours(), getMonthLen());
     }
 
-    public int getSumHours() {
+    public float getSumHours() {
         return sumHours;
     }
 

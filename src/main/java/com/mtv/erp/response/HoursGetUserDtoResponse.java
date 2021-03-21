@@ -11,18 +11,21 @@ public class HoursGetUserDtoResponse {
     private int id;
     private User user;
     private LocalDate date;
-    private int hours;
+    private float hours;
+    private int hoursInt;
     private boolean saved;
 
     public HoursGetUserDtoResponse() {
+        setHoursInt();
     }
 
-    public HoursGetUserDtoResponse(int id, User user, LocalDate date, int hours, boolean saved) {
+    public HoursGetUserDtoResponse(int id, User user, LocalDate date, float hours, boolean saved) {
         this.id = id;
         this.user = user;
         this.date = date;
         this.hours = hours;
         this.saved = saved;
+        setHoursInt();
     }
 
     public int getId() {
@@ -49,11 +52,11 @@ public class HoursGetUserDtoResponse {
         this.date = date;
     }
 
-    public int getHours() {
+    public float getHours() {
         return hours;
     }
 
-    public void setHours(int hours) {
+    public void setHours(float hours) {
         this.hours = hours;
     }
 
@@ -80,5 +83,13 @@ public class HoursGetUserDtoResponse {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getUser(), getDate(), getHours(), getSaved());
+    }
+
+    public int getHoursInt() {
+        return hoursInt;
+    }
+
+    private void setHoursInt() {
+        this.hoursInt = (int) hours;
     }
 }
