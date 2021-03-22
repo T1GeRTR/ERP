@@ -29,7 +29,7 @@ public class HoursController {
     @Autowired
     private UserService userService;
 
-    //@PostConstruct
+    @PostConstruct
     @RequestMapping(value = {"/hours/update"}, method = RequestMethod.GET)
     EmptyResponse update() throws ServerException {
         userService.update();
