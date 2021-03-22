@@ -29,7 +29,7 @@ public class HoursController {
     @Autowired
     private UserService userService;
 
-    @PostConstruct
+    //@PostConstruct
     @RequestMapping(value = {"/hours/update"}, method = RequestMethod.GET)
     EmptyResponse update() throws ServerException {
         userService.update();
@@ -38,17 +38,19 @@ public class HoursController {
 
     @RequestMapping(value = {"/hours/{monthYear}"}, method = RequestMethod.GET)
     String getFromDate(@PathVariable("monthYear") String monthYear, Model model) throws ServerException {
+        int month = MonthYearConverter.getMonth(monthYear);
+        int year = MonthYearConverter.getYear(monthYear);
         List<Integer> daysOfMonth = new ArrayList<>();
         List<String> daysOfWeek = new ArrayList<>();
-        for (int i = 0; i < LocalDate.of(MonthYearConverter.getYear(monthYear), MonthYearConverter.getMonth(monthYear), 1).lengthOfMonth(); i++) {
+        for (int i = 0; i < LocalDate.of(year, month, 1).lengthOfMonth(); i++) {
             daysOfMonth.add(i + 1);
-            daysOfWeek.add(DayOfWeek.getDay(LocalDate.of(MonthYearConverter.getYear(monthYear), MonthYearConverter.getMonth(monthYear), i+1).getDayOfWeek()).getDay());
+            daysOfWeek.add(DayOfWeek.getDay(LocalDate.of(year, month, i+1).getDayOfWeek()).getDay());
         }
         model.addAttribute("users", new UsersGetFromDateDtoResponse(userService.getFromDate(monthYear)));
         model.addAttribute("days", daysOfMonth);
         model.addAttribute("weeks", daysOfWeek);
-        model.addAttribute("month", MonthYearConverter.getMonth(monthYear));
-        model.addAttribute("year", MonthYearConverter.getYear(monthYear));
+        model.addAttribute("month", month);
+        model.addAttribute("year", year);
         return "usersFromDate";
     }
 

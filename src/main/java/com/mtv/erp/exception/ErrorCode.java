@@ -6,6 +6,7 @@ public enum ErrorCode {
     CANT_LOGIN("login", "User with login %s not found"),
     CANT_GET_PATIENT_BY_ID("id", "Patient with id %d not found"),
     CANT_UPDATE_USER("login","Can't update user"),
+    CANT_SAVE_USER("login","Can't save user"),
     CANT_INSERT_APPOINTMENT("doctorId", "Patient can't make appointment doctor more 1 per day"),
     APPOINTMENT_BUSY("doctorId", "Appointment in doctor's schedule busy"),
     CANT_GET_USER_BY_ID("userId", "User with userId %d not found"),

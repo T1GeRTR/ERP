@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <body>
-<div id="table-hours" class="table-hours" th:fragment="tableUsers">
+<div id="table-hours" class="table-hours pt130 pb130 " th:fragment="tableUsers">
     <div class="container">
         <table>
             <tr>
@@ -13,7 +13,7 @@
                 <td class="td-right"></td>
             </tr>
             <tr>
-                <td class="bgcolor-td td-name"> </td>
+                <td class="bgcolor-td td-name" th:utext="${month} + '-' + ${year}"></td>
                 <td class="bgcolor-td" th:each="day: ${days}">
                     <p th:utext="${day}"></p>
                 </td>
@@ -33,17 +33,16 @@
                                th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].user.id}">
                         <input type="hidden"
                                th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].date}">
-                        <div class="div-save" th:if="${day.saved}">
-                            <input type="hidden"
-                                   th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
-                                   class="input">
-                        </div>
-                        <div class="div-not-save" th:if="${not day.saved}">
-                            <input type="hidden"
-                                   th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
-                                   class="input">
-
-                        </div>
+                        <!--                        <div class="div-save" th:if="${day.saved}">-->
+                        <input type="hidden"
+                               th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
+                               class="input div-save" th:if="${day.saved}" onfocus="ChangeColor(this);">
+                        <!--                        </div>-->
+                        <!--                        <div class="div-not-save" th:if="${not day.saved}">-->
+                        <input type="hidden"
+                               th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
+                               class="input div-not-save" th:if="${not day.saved}" onfocus="ChangeColor(this);">
+                        <!--                        </div>-->
                     </td>
                     <td class="bgcolor-td"><input type="hidden" th:value="${user.sumHours}" class="bgcolor-td sum"
                                                   readonly></td>
@@ -55,14 +54,8 @@
                                 for(let i = 0; i < inputs.length; i++){
                                     inputs[i].value = (inputs[i].value==Math.round(inputs[i].value)) ? Math.round(inputs[i].value): Math.round(inputs[i].value*Math.pow(10,1))/Math.pow(10,1);
                                     inputs[i].type="number";
-                                    if (inputs[i].value > 8) {
-                                        inputs[i].style = "background-color: #009c29";
-                                    }
-                                    if (inputs[i].value == 8) {
-                                        inputs[i].style = "background-color: #00FF00";
-                                    }
-                                    if (inputs[i].value < 8 && inputs[i].value > 0) {
-                                        inputs[i].style = "background-color: #94ffb0";
+                                    if (inputs[i].value == 0) {
+                                        inputs[i].style = "background-color: #d4d4d4";
                                     }
                                 }
 
@@ -77,14 +70,10 @@
 
 
 
-
-
-
-
                 </script>
             </form>
         </table>
-        <input type="button" class="submit" onclick="document.forms['hours'].submit();">
+
     </div>
 </div>
 </body>

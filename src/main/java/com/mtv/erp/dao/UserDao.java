@@ -9,6 +9,8 @@ import java.util.List;
 public interface UserDao {
     User insert (User user) throws ServerException;
 
+    User save (User user) throws ServerException;
+
     boolean delete (int id) throws ServerException;
 
     boolean update (User user) throws ServerException;

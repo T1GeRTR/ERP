@@ -1,11 +1,14 @@
 package com.mtv.erp.service;
 
 import com.mtv.erp.dao.UserDao;
+import com.mtv.erp.exception.ErrorCode;
 import com.mtv.erp.exception.ServerException;
 import com.mtv.erp.model.User;
-import com.mtv.erp.response.UserGetFromDateDtoResponse;
-import com.mtv.erp.response.UserGetFromDateByIdDtoResponse;
+import com.mtv.erp.request.UserSaveDtoRequest;
+import com.mtv.erp.response.EmptyResponse;
 import com.mtv.erp.response.UserGetAllDtoResponse;
+import com.mtv.erp.response.UserGetFromDateByIdDtoResponse;
+import com.mtv.erp.response.UserGetFromDateDtoResponse;
 import com.mtv.erp.response.planfixResponse.PlanfixUser;
 import com.mtv.erp.utils.LaborRecordConverter;
 import com.mtv.erp.utils.MonthYearConverter;
@@ -17,7 +20,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,6 +77,14 @@ public class UserService {
         return getAll();
     }
 
+    public EmptyResponse save(UserSaveDtoRequest user) throws ServerException{
+        User savedUser = userDao.save(new User(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail()));
+        if(savedUser.getId() == 0){
+            new ServerException(ErrorCode.CANT_SAVE_USER);
+        }
+        return new EmptyResponse();
+    }
+
     public List<UserGetAllDtoResponse> getAll() throws ServerException {
         List<UserGetAllDtoResponse> getAllDtoResponses = new ArrayList<>();
         for (User user : userDao.getAll()) {
@@ -88,7 +98,7 @@ public class UserService {
         int month = MonthYearConverter.getMonth(monthYear);
         int year = MonthYearConverter.getYear(monthYear);
         LocalDate from = LocalDate.of(year, month, 1);
-        LocalDate to = (from.getMonthValue() < LocalDate.now().getMonthValue() && from.getYear() <= LocalDate.now().getYear()) ? from.withDayOfMonth(from.lengthOfMonth()) : LocalDate.now();
+        LocalDate to = (from.getMonthValue() < LocalDate.now().getMonthValue() && from.getYear() <= LocalDate.now().getYear()) || (from.getYear() < LocalDate.now().getYear()) ? from.withDayOfMonth(from.lengthOfMonth()) : LocalDate.now();
         for (User user : userDao.getFromDate(from, to)) {
             if (user != null) {
                 getFromDates.add(new UserGetFromDateDtoResponse(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertHours(LaborRecordConverter.convertHours(user.getHours(), from, user)), from.lengthOfMonth()));

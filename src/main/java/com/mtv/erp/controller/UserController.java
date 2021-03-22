@@ -4,6 +4,7 @@ import com.mtv.erp.exception.ServerException;
 import com.mtv.erp.model.DayOfWeek;
 import com.mtv.erp.request.HoursGetUserDtoRequest;
 import com.mtv.erp.request.UserGetFromDateDtoRequest;
+import com.mtv.erp.request.UserSaveDtoRequest;
 import com.mtv.erp.request.UsersGetFromDateDtoRequest;
 import com.mtv.erp.response.HoursGetUserDtoResponse;
 import com.mtv.erp.response.UserGetFromDateDtoResponse;
@@ -32,8 +33,11 @@ public class UserController {
 
     @RequestMapping(value = {"/user"}, method = RequestMethod.GET)
     public String getAll(Model model) throws ServerException {
+        model.addAttribute("user", new UserSaveDtoRequest(1, "Имя", "Фамилия", "email@mail.ru"));
         model.addAttribute("users", userService.getAll());
-        return "users";
+        model.addAttribute("month", LocalDate.now().getMonthValue());
+        model.addAttribute("year", LocalDate.now().getYear());
+        return "getAllUser";
     }
 
     @RequestMapping(value = {"/user/id/{monthYear}"}, method = RequestMethod.GET)
@@ -56,6 +60,15 @@ public class UserController {
     String update(Model model) throws ServerException {
         model.addAttribute("users", userService.update());
         return "users";
+    }
+
+    @RequestMapping(value ={"/user"}, method = RequestMethod.POST)
+    String addUser(Model model, @ModelAttribute("SpringWeb") UserSaveDtoRequest user) throws ServerException {
+        userService.save(user);
+        model.addAttribute("users", userService.getAll());
+        model.addAttribute("month", LocalDate.now().getMonthValue());
+        model.addAttribute("year", LocalDate.now().getYear());
+        return "getAllUser";
     }
 
     @RequestMapping(value = {"/user/{monthYear}"}, method = RequestMethod.POST)

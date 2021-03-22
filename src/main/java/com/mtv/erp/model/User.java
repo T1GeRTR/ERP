@@ -14,14 +14,20 @@ public class User {
     private String email;
     private List<Hours> hours;
     private List<LaborRecord> userHours;
+    private boolean saved;
 
-    public User(int id, String firstname, String lastname, String email, List<Hours> hours, List<LaborRecord> userHours) {
+    public User(int id, String firstname, String lastname, String email, List<Hours> hours, List<LaborRecord> userHours, boolean saved) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.hours = hours;
         this.userHours = userHours;
+        this.saved = saved;
+    }
+
+    public User(int id, String firstname, String lastname, String email, List<Hours> hours, List<LaborRecord> userHours) {
+        this(id, firstname, lastname, email, hours, userHours, false);
     }
 
     public User(int id, String firstname, String lastname, String email, List<Hours> hours) {
@@ -98,5 +104,13 @@ public class User {
 
     public void setUserHours(List<LaborRecord> userHours) {
         this.userHours = userHours;
+    }
+
+    public boolean isSaved() {
+        return saved;
+    }
+
+    public void setSaved(boolean saved) {
+        this.saved = saved;
     }
 }

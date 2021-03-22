@@ -35,6 +35,23 @@ public class UserDaoImpl extends DaoImplBase implements UserDao {
     }
 
     @Override
+    public User save(User user) throws ServerException {
+        LOGGER.debug("DAO save");
+        try (SqlSession sqlSession = getSession()) {
+            try {
+                getUserMapper(sqlSession).save(user);
+            } catch (RuntimeException e) {
+                LOGGER.debug("Can't save user {}", user, e);
+                sqlSession.rollback();
+                throw new ServerException(ErrorCode.DATABASE_ERROR);
+            }
+            sqlSession.commit();
+            user = getUserMapper(sqlSession).getById(user.getId());
+        }
+        return user;
+    }
+
+    @Override
     public boolean update(User user) throws ServerException {
         LOGGER.debug("DAO update");
         try (SqlSession sqlSession = getSession()) {

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<footer id="footer" class="footer" th:fragment="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <select id="typeDay" style="width: 348px;">
+                            <option th:value=1 selected>Явка</option>
+                            <option th:value=2>Командировка</option>
+                            <option th:value=3>Отпуск рабочие дни</option>
+                            <option th:value=4>Отпуск выходные дни</option>
+                            <option th:value=5>Выходной</option>
+                            <option th:value=6>Административный отпуск</option>
+                            <option th:value=7>Больничный</option>
+                            <option th:value=8>Простой по вине работодателя</option>
+                            <option th:value=9>Ученический отпуск</option>
+                            <option th:value=10>День отдыха за ранее отработанное время</option>
+                            <option th:value=11>Больничный в командировке</option>
+                            <option th:value=12>Рабочий выходной</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <select id="hours">
+                            <option th:value=1>1</option>
+                            <option th:value=2>2</option>
+                            <option th:value=3>3</option>
+                            <option th:value=4>4</option>
+                            <option th:value=5>5</option>
+                            <option th:value=6>6</option>
+                            <option th:value=7>7</option>
+                            <option th:value=8 selected>8</option>
+                            <option th:value=9>9</option>
+                            <option th:value=10>10</option>
+                            <option th:value=11>11</option>
+                            <option th:value=12>12</option>
+                        </select>
+                    </div>
+                    <div class="col-3 d-flex justify-content-start">
+                        Применить
+                    </div>
+                    <div class="col-1 d-flex justify-content-start">
+                        <input type="checkbox" checked>
+                    </div>
+                    <script>
+                        function ChangeColor(Element) {
+                            let type = document.getElementById('typeDay');
+                            let hours = document.getElementById('hours');
+                            let count;
+                            let color;
+	                        if (type.value == 1)
+	                            color = "#FFF";
+	                        else if (type.value == 2)
+	                            color = "#FF0";
+	                        else
+	                            color = "#000";
+	                        Element.style = "background-color: " + color + ";";
+                        }
+                    </script>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="col-12 d-flex justify-content-end">
+                    <input type="button" class="submit" onclick="document.forms['hours'].submit();">
+                </div>
+            </div>
+            <script type="text/javascript">
+<!--        function selectInit() {-->
+<!--            var month = $("#monthInt").val();-->
+<!--            var year = $("#yearInt").val();-->
+<!--            console.log(month);-->
+<!--            console.log(year);-->
+<!--            $("#month").val() = month;-->
+<!--            $("#year").val() = year;-->
+<!--        }-->
+
+<!--        selectInit();-->
+
+        function updateTable() {
+            var month = $("#monthInt").val();
+            var year =  $("#yearInt").val();
+            var url = "../hours/" + month + "-" + year;
+            $.get(url, function(fragment) { // get from controller
+                $("#table-hours").replaceWith(fragment); // update snippet of page
+            });
+        }
+
+
+
+
+
+
+
+
+            </script>
+        </div>
+    </div>
+    </div>
+</footer>
+
+</body>
+</html>

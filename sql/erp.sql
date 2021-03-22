@@ -30,11 +30,13 @@ CREATE TABLE `user` (
 `lastName` varchar(50)NOT NULL,
 `email` varchar(50)NOT NULL,
 `deleted` boolean NOT NULL DEFAULT FALSE,
+`saved` boolean NOT NULL DEFAULT FALSE,
 PRIMARY KEY(id),
 KEY firstName(firstName),
 KEY lastName(lastName),
 KEY email(email),
-KEY deleted(deleted)
+KEY deleted(deleted),
+KEY saved(saved)
 )ENGINE = INNODB DEFAULT CHARSET = utf8
 ;
 
@@ -76,7 +78,7 @@ CREATE TABLE `user_hours` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 `userId` int(11)NOT NULL,
 `date` date NOT NULL,
-`hours` int(11)NOT NULL,
+`hours` float(11)NOT NULL,
 `taskId` int(11)NOT NULL,
 `taskTitle` varchar(200)NOT NULL,
 `projectId` int(11)NOT NULL,
@@ -97,7 +99,7 @@ CREATE TABLE `hours` (
 	`id` int(11) NOT NULL,
 `userId` int(11)NOT NULL,
 `date` date NOT NULL,
-`hours` int(11)NOT NULL,
+`hours` float(11)NOT NULL,
 `saved` boolean NOT NULL DEFAULT FALSE,
 `deleted` boolean NOT NULL DEFAULT FALSE,
 PRIMARY KEY(id),

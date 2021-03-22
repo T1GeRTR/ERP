@@ -15,6 +15,10 @@ public interface UserMapper {
     @Insert({"INSERT INTO user (id, firstname, lastname, email) VALUES (#{user.id}, #{user.firstname}, #{user.lastname}, #{user.email}"})
     void insert(@Param("user") User user);
 
+    @Insert({"INSERT INTO user (id, firstname, lastname, email, saved) VALUES ((select max(b.id) From user as a left join user as b on a.id = b.id WHERE a.id < 6000000) + 1, #{user.firstname}, #{user.lastname}, #{user.email}, 1)"})
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    Integer save(@Param("user") User user);
+
     @Select({"SELECT id, firstname, lastname, email FROM user WHERE id = #{id} AND NOT deleted = 1"})
     User getById(@Param("id") int id);
 

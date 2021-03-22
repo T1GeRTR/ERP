@@ -12,13 +12,26 @@ table {
     border-collapse: collapse;
 }
 
-.table-hours {
+.table-hours, .table-users {
     background-image: url(/img/iStock.jpg);
-    padding-top: 130px;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    border-collapse: collapse;
 }
+
+.bg-td{
+    background-color: #FFF;
+}
+
+.pt130{
+    padding-top: 130px;
+}
+
+.pb130{
+    padding-bottom: 130px;
+}
+
 
 table td,
 input,
@@ -113,8 +126,25 @@ input[type=number]::-webkit-outer-spin-button {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 80%;
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
+    border: none;;
+    padding: 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 12px;
+}
+
+.update{
+    background-color: #e2e6e691;
+    background-image: url(/img/ok.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+    width: 50px;
+    height: 50px;
     border: none;;
     padding: 20px;
     text-decoration: none;
@@ -130,4 +160,38 @@ input[type=number]::-webkit-outer-spin-button {
 
 .sum{
     font-size: 15px;
+}
+
+.footer {
+    height: 60px;
+    background: #aaa;
+    position: fixed;
+    bottom: 0;
+    /* Центрирование */
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    background: #FFF;
+}
+
+.border-color {
+    border: 1px solid #000;
+}
+
+.user-save{
+    background-color: #e2e6e691;
+    background-image: url(/img/save.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+    width: 30px;
+    height: 30px;
+    border: none;;
+    padding: 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 12px;
 }

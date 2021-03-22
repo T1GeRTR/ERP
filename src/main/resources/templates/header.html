@@ -7,10 +7,10 @@
         <div class="logo"><img src="/ASE_logo_rus.png" alt=""></div>
         <ul class="menu"></ul>
         <li>
-            <a href="#">Мой табель</a>
+            <a th:href="@{'../user/6258116/' + ${month} + '-' + ${year}}">Мой табель</a>
         </li>
         <li>
-            <a href="#">Сотрудники</a>
+            <a th:href="@{'../user/'}">Сотрудники</a>
         </li>
         <li>
             <a th:href="@{'../hours/' + ${month} + '-' + ${year}}">Общий табель</a>
@@ -50,61 +50,6 @@
             </div>
         </li>
         </ul>
-        <input type="text"/>
-    </div>
-    <div class="d-flex">
-        <select id="month" th:value="${month}">
-            <option th:value=1 th:text="Январь"></option>
-            <option th:value=2 th:text="Февраль"></option>
-            <option th:value=3 th:text="Март"></option>
-            <option th:value=4 th:text="Апрель"></option>
-            <option th:value=5 th:text="Май"></option>
-            <option th:value=6 th:text="Июнь"></option>
-            <option th:value=7 th:text="Июль"></option>
-            <option th:value=8 th:text="Август"></option>
-            <option th:value=9 th:text="Сентябрь"></option>
-            <option th:value=10 th:text="Октябрь"></option>
-            <option th:value=11 th:text="Ноябрь"></option>
-            <option th:value=12 th:text="Декабрь"></option>
-        </select>
-        <select id="year" th:value="${year}">
-            <option th:value=2020 th:text="2020"></option>
-            <option th:value=2021 th:text="2021"></option>
-            <option th:value=2022 th:text="2022"></option>
-            <option th:value=2023 th:text="2023"></option>
-            <option th:value=2024 th:text="2024"></option>
-            <option th:value=2025 th:text="2025"></option>
-            <option th:value=2026 th:text="2026"></option>
-            <option th:value=2027 th:text="2027"></option>
-            <option th:value=2028 th:text="2028"></option>
-            <option th:value=2029 th:text="2029"></option>
-            <option th:value=2030 th:text="2030"></option>
-            <option th:value=2031 th:text="2031"></option>
-        </select>
-        <input type="button" th:onclick="updateEventCount()">
-        <input id="monthInt" type="hidden" th:value="${month}">
-        <input id="yearInt" type="hidden" th:value="${year}">
-        <script type="text/javascript">
-        function selectInit() {
-            var month = $("#monthInt").val();
-            var year = $("#yearInt").val();
-            console.log(month);
-            console.log(year);
-            $("#month").val() = month;
-            $("#year").val() = year;
-        }
-
-        selectInit();
-
-        function updateEventCount() {
-            var month = $("#month").val();
-            var year =  $("#year").val();
-            var url = "../hours/" + month + "-" + year;
-            $.get(url, function(fragment) { // get from controller
-                $("#table-hours").replaceWith(fragment); // update snippet of page
-            });
-        }
-        </script>
     </div>
 </header>
 </body>
