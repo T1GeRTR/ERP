@@ -27,6 +27,7 @@
                 <div class="row">
                     <div class="col-4">
                         <select id="hours">
+                            <option th:value=0>0</option>
                             <option th:value=1>1</option>
                             <option th:value=2>2</option>
                             <option th:value=3>3</option>
@@ -41,27 +42,9 @@
                             <option th:value=12>12</option>
                         </select>
                     </div>
-                    <div class="col-3 d-flex justify-content-start">
-                        Применить
+                    <div class="col-4 d-flex justify-content-end">
+                        <input id="check" type="checkbox" checked> Применить
                     </div>
-                    <div class="col-1 d-flex justify-content-start">
-                        <input type="checkbox" checked>
-                    </div>
-                    <script>
-                        function ChangeColor(Element) {
-                            let type = document.getElementById('typeDay');
-                            let hours = document.getElementById('hours');
-                            let count;
-                            let color;
-	                        if (type.value == 1)
-	                            color = "#FFF";
-	                        else if (type.value == 2)
-	                            color = "#FF0";
-	                        else
-	                            color = "#000";
-	                        Element.style = "background-color: " + color + ";";
-                        }
-                    </script>
                 </div>
             </div>
             <div class="col-6">
@@ -69,35 +52,6 @@
                     <input type="button" class="submit" onclick="document.forms['hours'].submit();">
                 </div>
             </div>
-            <script type="text/javascript">
-<!--        function selectInit() {-->
-<!--            var month = $("#monthInt").val();-->
-<!--            var year = $("#yearInt").val();-->
-<!--            console.log(month);-->
-<!--            console.log(year);-->
-<!--            $("#month").val() = month;-->
-<!--            $("#year").val() = year;-->
-<!--        }-->
-
-<!--        selectInit();-->
-
-        function updateTable() {
-            var month = $("#monthInt").val();
-            var year =  $("#yearInt").val();
-            var url = "../hours/" + month + "-" + year;
-            $.get(url, function(fragment) { // get from controller
-                $("#table-hours").replaceWith(fragment); // update snippet of page
-            });
-        }
-
-
-
-
-
-
-
-
-            </script>
         </div>
     </div>
     </div>
