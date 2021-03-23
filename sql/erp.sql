@@ -102,12 +102,14 @@ CREATE TABLE `hours` (
 `hours` float(11)NOT NULL,
 `saved` boolean NOT NULL DEFAULT FALSE,
 `deleted` boolean NOT NULL DEFAULT FALSE,
+`type` int(11) NOT NULL DEFAULT 1,
 PRIMARY KEY(id),
 FOREIGN KEY(userId)REFERENCES `user`(id) ON DELETE CASCADE,
 KEY `date`(date),
 KEY `hours`(date),
 KEY saved(saved),
-KEY deleted(deleted)
+KEY deleted(deleted),
+KEY type (type)
 )ENGINE = INNODB DEFAULT CHARSET = utf8;
 
 INSERT INTO user (id, firstname, lastname, email, deleted) VALUES (1, 'firstname', 'lastname', 'email', 1);

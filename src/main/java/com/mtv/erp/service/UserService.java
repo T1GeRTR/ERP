@@ -1,7 +1,6 @@
 package com.mtv.erp.service;
 
 import com.mtv.erp.dao.UserDao;
-import com.mtv.erp.exception.ErrorCode;
 import com.mtv.erp.exception.ServerException;
 import com.mtv.erp.model.User;
 import com.mtv.erp.request.UserSaveDtoRequest;
@@ -78,10 +77,7 @@ public class UserService {
     }
 
     public EmptyResponse save(UserSaveDtoRequest user) throws ServerException{
-        User savedUser = userDao.save(new User(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail()));
-        if(savedUser.getId() == 0){
-            new ServerException(ErrorCode.CANT_SAVE_USER);
-        }
+       userDao.save(new User(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail()));
         return new EmptyResponse();
     }
 
@@ -101,7 +97,7 @@ public class UserService {
         LocalDate to = (from.getMonthValue() < LocalDate.now().getMonthValue() && from.getYear() <= LocalDate.now().getYear()) || (from.getYear() < LocalDate.now().getYear()) ? from.withDayOfMonth(from.lengthOfMonth()) : LocalDate.now();
         for (User user : userDao.getFromDate(from, to)) {
             if (user != null) {
-                getFromDates.add(new UserGetFromDateDtoResponse(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertHours(LaborRecordConverter.convertHours(user.getHours(), from, user)), from.lengthOfMonth()));
+                getFromDates.add(new UserGetFromDateDtoResponse(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertDtoHours(LaborRecordConverter.convertHours(user.getHours(), from, user)), from.lengthOfMonth()));
             }
         }
         return getFromDates;
@@ -113,6 +109,6 @@ public class UserService {
         LocalDate from = LocalDate.of(year, month, 1);
         LocalDate to = (from.getMonthValue() < LocalDate.now().getMonthValue() && from.getYear() <= LocalDate.now().getYear()) ? from.withDayOfMonth(from.lengthOfMonth()) : LocalDate.now();
         User user = userDao.getFromDateById(from, to, id);
-        return new UserGetFromDateByIdDtoResponse(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertLaborRecord(user.getUserHours()), LaborRecordConverter.convertHours(LaborRecordConverter.convertHours(user.getHours(), from, user)), from.lengthOfMonth());
+        return new UserGetFromDateByIdDtoResponse(user.getId(), user.getFirstname(), user.getLastname(), user.getEmail(), LaborRecordConverter.convertLaborRecord(user.getUserHours()), LaborRecordConverter.convertDtoHours(LaborRecordConverter.convertHours(user.getHours(), from, user)), from.lengthOfMonth());
     }
 }

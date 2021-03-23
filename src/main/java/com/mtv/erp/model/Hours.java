@@ -7,32 +7,36 @@ public class Hours {
     private int id;
     private User user;
     private LocalDate date;
-    private float hours;
+    private String hours;
     private boolean saved;
+    private int type;
 
-    public Hours(int id, User user, LocalDate date, float hours, boolean saved) {
+    public Hours(int id, User user, LocalDate date, String hours, boolean saved, int type) {
         this.id = id;
         this.user = user;
         this.date = date;
         this.hours = hours;
         this.saved = saved;
+        this.type = type;
     }
 
-    public Hours(int id, User user, LocalDate date, float hours) {
-        this(id, user, date, hours, false);
+    public Hours(int id, User user, LocalDate date, String hours, int type) {
+        this(id, user, date, hours, false, type);
     }
 
-    public Hours(){
+    public Hours() {
+        setType(1);
     }
 
-    public Hours(float hours, LocalDate date, User user){
+    public Hours(String hours, LocalDate date, User user, int type) {
         setHours(hours);
         setDate(date);
         setUser(user);
+        setType(type);
     }
 
-    public Hours(int id, float hours){
-        this(id, null, null, hours);
+    public Hours(int id, String hours) {
+        this(id, null, null, hours, 1);
     }
 
     public int getId() {
@@ -59,11 +63,11 @@ public class Hours {
         this.date = date;
     }
 
-    public float getHours() {
+    public String getHours() {
         return hours;
     }
 
-    public void setHours(float hours) {
+    public void setHours(String hours) {
         this.hours = hours;
     }
 
@@ -90,5 +94,13 @@ public class Hours {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getUser(), getDate(), getHours(), isSaved());
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

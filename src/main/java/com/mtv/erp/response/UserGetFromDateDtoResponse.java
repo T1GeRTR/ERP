@@ -99,7 +99,11 @@ public class UserGetFromDateDtoResponse {
 
     private void setSumHours() {
         for (HoursGetUserDtoResponse hours : hours) {
-            sumHours += hours.getHours();
+            try {
+                sumHours += Float.parseFloat(hours.getHours());
+            } catch (NumberFormatException ex){
+                continue;
+            }
         }
     }
 }

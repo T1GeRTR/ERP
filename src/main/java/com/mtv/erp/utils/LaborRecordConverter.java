@@ -27,10 +27,10 @@ public class LaborRecordConverter {
         return list;
     }
 
-    public static List<HoursGetUserDtoResponse> convertHours(List<Hours> hours) {
+    public static List<HoursGetUserDtoResponse> convertDtoHours(List<Hours> hours) {
         List<HoursGetUserDtoResponse> list = new ArrayList<>();
         for (Hours hour : hours) {
-            list.add(new HoursGetUserDtoResponse(hour.getId(), hour.getUser(), hour.getDate(), hour.getHours(), hour.isSaved()));
+            list.add(new HoursGetUserDtoResponse(hour.getId(), hour.getUser(), hour.getDate(), hour.getHours(), hour.isSaved(), hour.getType()));
         }
         return list;
     }
@@ -38,14 +38,14 @@ public class LaborRecordConverter {
     public static List<Hours> convertHours(List<Hours> hours, LocalDate date, User user) {
         Hours[] monthHours = new Hours[date.lengthOfMonth()];
         for (int i = 0; i < monthHours.length; i++) {
-            monthHours[i] = new Hours(0, LocalDate.of(date.getYear(), date.getMonth(), i + 1), user);
+            monthHours[i] = new Hours("0", LocalDate.of(date.getYear(), date.getMonth(), i + 1), user, 5);
         }
         if (hours == null || hours.size() == 0) {
             return Arrays.asList(monthHours);
         }
         for (Hours elem : hours) {
             int index = elem.getDate().getDayOfMonth() - 1;
-            if (monthHours[index].getHours() == 0) {
+            if (monthHours[index].getHours().equals("0")) {
                 monthHours[index] = elem;
             } else {
                 Hours record = monthHours[index];
@@ -58,7 +58,7 @@ public class LaborRecordConverter {
     public static List<Hours> convertToHours(List<LaborRecord> laborRecords) {
         List<Hours> list = new ArrayList<>();
         for (LaborRecord laborRecord : laborRecords) {
-            list.add(new Hours(laborRecord.getId(), laborRecord.getUser(), laborRecord.getDate(), laborRecord.getHours()));
+            list.add(new Hours(laborRecord.getId(), laborRecord.getUser(), laborRecord.getDate(), String.valueOf(laborRecord.getHours()), 1));
         }
         return uniqueDayHours(list);
     }
@@ -70,10 +70,18 @@ public class LaborRecordConverter {
             for (int j = 0; j < list.size(); j++) {
                 Hours hours1 = list.get(i);
                 Hours hours2 = list.get(j);
+                float scale = (float) Math.pow(10, 1);
+                if (i == 0) {
+                    float num = Float.parseFloat(hours2.getHours());
+                    if(num != 0) {
+                        hours2.setHours(String.valueOf(Math.round((num) * scale) / scale));
+                    }
+                }
                 if (hours1.getUser().getFirstname().equals(hours2.getUser().getFirstname()) && hours1.getUser().getLastname().equals(hours2.getUser().getLastname()) && hours1.getUser().getEmail().equals(hours2.getUser().getEmail()) && hours1.getDate().equals(hours2.getDate()))
                     if (i != j) {
                         if (!(deleteIds.contains(i) || deleteIds.contains(j))) {
-                            hours1.setHours(hours1.getHours() + hours2.getHours());
+                            float num = Float.parseFloat(hours1.getHours()) + Float.parseFloat(hours2.getHours());
+                            hours1.setHours(String.valueOf(num));
                             deleteIds.add(j);
                         }
                     }
@@ -91,8 +99,8 @@ public class LaborRecordConverter {
         for (PlanfixLaborRecord planfixLaborRecord : planfixLaborRecords) {
             planfixLaborRecord.setLocalDateTime();
             LocalTime time = planfixLaborRecord.getLaborSpan();
-            float hours = (float)planfixLaborRecord.getLaborSpan().getHour() + (float)planfixLaborRecord.getLaborSpan().getMinute()/60;
-            laborRecords.add(new LaborRecord(new User(planfixLaborRecord.getFirstname(), planfixLaborRecord.getLastname()), planfixLaborRecord.getStartTime().toLocalDate(), (float)planfixLaborRecord.getLaborSpan().getHour() + (float)planfixLaborRecord.getLaborSpan().getMinute()/60, (int) planfixLaborRecord.getTaskId(), planfixLaborRecord.getTaskTitle(), (int) planfixLaborRecord.getProjectId(), planfixLaborRecord.getProjectTitle()));
+            float hours = (float) planfixLaborRecord.getLaborSpan().getHour() + (float) planfixLaborRecord.getLaborSpan().getMinute() / 60;
+            laborRecords.add(new LaborRecord(new User(planfixLaborRecord.getFirstname(), planfixLaborRecord.getLastname()), planfixLaborRecord.getStartTime().toLocalDate(), (float) planfixLaborRecord.getLaborSpan().getHour() + (float) planfixLaborRecord.getLaborSpan().getMinute() / 60, (int) planfixLaborRecord.getTaskId(), planfixLaborRecord.getTaskTitle(), (int) planfixLaborRecord.getProjectId(), planfixLaborRecord.getProjectTitle()));
         }
         return laborRecords;
     }
@@ -101,8 +109,8 @@ public class LaborRecordConverter {
         List<Hours> hourList = new ArrayList<>();
         for (UserGetFromDateDtoRequest user : request.getUserList()) {
             for (HoursGetUserDtoRequest hours : user.getHours()) {
-                if (hours.getId() != 0 || hours.getHours() != 0) {
-                    hourList.add(new Hours(hours.getId(), hours.getUser(), hours.getDate(), hours.getHours()));
+                if (hours.getId() != 0 || !hours.getHours().equals("0") || hours.getType() != 5) {
+                    hourList.add(new Hours(hours.getId(), hours.getUser(), hours.getDate(), hours.getHours(), hours.getType()));
                 }
             }
         }

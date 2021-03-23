@@ -11,7 +11,7 @@ public class UserGetFromDateDtoRequest {
     private String email;
     private List<HoursGetUserDtoRequest> hours;
     private int monthLen;
-    private int sumHours;
+    private String sumHours;
 
     public UserGetFromDateDtoRequest(int id, String firstname, String lastname, String email, List<HoursGetUserDtoRequest> hours, int monthLen) {
         this.id = id;
@@ -93,7 +93,7 @@ public class UserGetFromDateDtoRequest {
         return Objects.hash(getId(), getFirstname(), getLastname(), getEmail(), getHours(), getMonthLen());
     }
 
-    public int getSumHours() {
+    public String getSumHours() {
         return sumHours;
     }
 

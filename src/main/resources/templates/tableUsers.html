@@ -33,6 +33,8 @@
                                th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].user.id}">
                         <input type="hidden"
                                th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].date}">
+                        <input type="hidden"
+                               th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].type}">
                         <!--                        <div class="div-save" th:if="${day.saved}">-->
                         <input type="hidden"
                                th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
@@ -43,6 +45,7 @@
                                th:field="*{userList[__${itemStat.index}__].hours[__${itemStat1.index}__].hours}"
                                class="input div-not-save" th:if="${not day.saved}" onfocus="ChangeColor(this);">
                         <!--                        </div>-->
+
                     </td>
                     <td class="bgcolor-td"><input type="hidden" th:value="${user.sumHours}" class="bgcolor-td sum"
                                                   readonly></td>

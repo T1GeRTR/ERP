@@ -54,14 +54,14 @@ public interface HoursMapper {
     @Update({"UPDATE user_hours SET hours = #{elem.hours} WHERE id = #{elem.id}"})
     Integer update(@Param("elem") LaborRecord laborRecord);
 
-    @Update({"UPDATE hours SET hours = #{elem.hours} WHERE id = #{elem.id} AND saved = 0"})
+    @Update({"UPDATE hours SET hours = #{elem.hours}, type = #{elem.type} WHERE id = #{elem.id} AND saved = 0"})
     Integer updateHours(@Param("elem") Hours hours);
 
-    @Update({"UPDATE hours SET hours = #{elem.hours}, saved = 1 WHERE id = #{elem.id}"})
+    @Update({"UPDATE hours SET hours = #{elem.hours}, saved = 1, type = #{elem.type} WHERE id = #{elem.id}"})
     Integer saveChanges(@Param("elem") Hours hours);
 
 //    INSERT INTO hours (id, userId, date, hours, saved) VALUES (9000, 6257958, '2000-01-01', 8, 1)
-    @Update({"INSERT INTO hours (id, userId, date, hours, saved) VALUES ('1' + (SELECT max(b.id) From hours as a left join hours as b on a.id = b.id),#{hours.user.id}, #{hours.date}, #{hours.hours}, 1)"})
+    @Update({"INSERT INTO hours (id, userId, date, hours, saved, type) VALUES ('1' + (SELECT max(b.id) From hours as a left join hours as b on a.id = b.id),#{hours.user.id}, #{hours.date}, #{hours.hours}, 1, #{hours.type})"})
     Integer insertChanges(@Param("hours") Hours hours);
 
     @Select({"SELECT id, userId, date, hours, taskId, taskTitle, projectId, projectTitle FROM user_hours WHERE date BETWEEN #{from} AND #{to} AND NOT deleted = 1 ORDER BY date"})
@@ -71,7 +71,7 @@ public interface HoursMapper {
     })
     List<LaborRecord> getFromDate(@Param("from") LocalDate from, @Param("to") LocalDate to);
 
-    @Select({"SELECT id, userId, date, hours, saved FROM hours WHERE date BETWEEN #{from} AND #{to} AND NOT deleted = 1 ORDER BY date"})
+    @Select({"SELECT id, userId, date, hours, saved, type FROM hours WHERE date BETWEEN #{from} AND #{to} AND NOT deleted = 1 ORDER BY date"})
     @Results({
             @Result(property = "user", column = "userId", javaType = User.class,
                     one = @One(select = "com.mtv.erp.mybatis.mappers.UserMapper.getById", fetchType = FetchType.LAZY))
@@ -85,7 +85,7 @@ public interface HoursMapper {
     })
     List<LaborRecord> getFromDateByUserId(@Param("from") LocalDate from, @Param("to") LocalDate to, @Param("userId") int userId);
 
-    @Select({"SELECT id, userId, date, hours, saved FROM hours WHERE date BETWEEN #{from} AND #{to} AND userId = #{userId} AND NOT deleted = 1 ORDER BY date"})
+    @Select({"SELECT id, userId, date, hours, saved, type FROM hours WHERE date BETWEEN #{from} AND #{to} AND userId = #{userId} AND NOT deleted = 1 ORDER BY date"})
     @Results({
             @Result(property = "user", column = "userId", javaType = User.class,
                     one = @One(select = "com.mtv.erp.mybatis.mappers.UserMapper.getById", fetchType = FetchType.LAZY))

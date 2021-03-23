@@ -137,12 +137,18 @@ public class HoursService {
         List<Hours> hours = LaborRecordConverter.convertChangeHours(request);
         for (Hours elem: hours) {
             for (HoursGetUserDtoResponse old: oldHours){
-                if(elem.getId() == old.getId() && elem.getHours() != old.getHours()){
+                String elemHours;
+                try {
+                    elemHours = String.valueOf(Float.parseFloat(elem.getHours()));
+                } catch (NumberFormatException ex){
+                    elemHours = elem.getHours();
+                }
+                if(elem.getId() == old.getId() && (!elemHours.equals(old.getHours()) || elem.getType() != old.getType())){
                     hoursDao.saveChanges(elem);
                     break;
                 }
             }
-            if(elem.getId() == 0 && elem.getHours() != 0){
+            if(elem.getId() == 0 && (!elem.getHours().equals("0") || elem.getType() !=5)){
                 hoursDao.insertChanges(elem);
             }
         }
