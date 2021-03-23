@@ -13703,3 +13703,657 @@ Unconditional classes:
 
 
 com.mtv.erp.ErpApplication 2021.03.22 19:57:34.098 INFO  [main] c.m.e.ErpApplication: Started ErpApplication in 3.478 seconds (JVM running for 4.283)
+com.mtv.erp.service.UserService 2021.03.23 00:00:02.441 DEBUG [scheduling-1] c.m.e.s.UserService: Users UPDATE
+com.mtv.erp.utils.Planfix 2021.03.23 00:00:02.447 DEBUG [scheduling-1] c.m.e.u.Planfix: Planfix: getUsers
+com.mtv.erp.service.UserService 2021.03.23 00:00:08.768 DEBUG [scheduling-1] c.m.e.s.UserService: Users in Planfix: 40
+com.mtv.erp.mybatis.daoimpl.UserDaoImpl 2021.03.23 00:00:08.772 DEBUG [scheduling-1] c.m.e.m.d.UserDaoImpl: DAO getAll
+com.mtv.erp.mybatis.mappers.UserMapper.getAll 2021.03.23 00:00:09.470 DEBUG [scheduling-1] c.m.e.m.m.U.getAll: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE NOT deleted = 1 ORDER BY lastname 
+com.mtv.erp.mybatis.mappers.UserMapper.getAll 2021.03.23 00:00:09.501 DEBUG [scheduling-1] c.m.e.m.m.U.getAll: ==> Parameters: 
+com.mtv.erp.mybatis.mappers.UserMapper.getAll 2021.03.23 00:00:09.525 DEBUG [scheduling-1] c.m.e.m.m.U.getAll: <==      Total: 40
+com.mtv.erp.service.UserService 2021.03.23 00:00:09.528 DEBUG [scheduling-1] c.m.e.s.UserService: Users add: 0
+com.mtv.erp.service.UserService 2021.03.23 00:00:09.528 DEBUG [scheduling-1] c.m.e.s.UserService: Users update: 0
+com.mtv.erp.service.UserService 2021.03.23 00:00:09.528 DEBUG [scheduling-1] c.m.e.s.UserService: Users delete: 0
+com.mtv.erp.mybatis.daoimpl.UserDaoImpl 2021.03.23 00:00:09.528 DEBUG [scheduling-1] c.m.e.m.d.UserDaoImpl: DAO getAll
+com.mtv.erp.mybatis.mappers.UserMapper.getAll 2021.03.23 00:00:09.529 DEBUG [scheduling-1] c.m.e.m.m.U.getAll: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE NOT deleted = 1 ORDER BY lastname 
+com.mtv.erp.mybatis.mappers.UserMapper.getAll 2021.03.23 00:00:09.530 DEBUG [scheduling-1] c.m.e.m.m.U.getAll: ==> Parameters: 
+com.mtv.erp.mybatis.mappers.UserMapper.getAll 2021.03.23 00:00:09.533 DEBUG [scheduling-1] c.m.e.m.m.U.getAll: <==      Total: 40
+com.mtv.erp.service.HoursService 2021.03.23 01:00:02.448 DEBUG [scheduling-1] c.m.e.s.HoursService: Hours UPDATE
+com.mtv.erp.utils.Planfix 2021.03.23 01:00:02.461 DEBUG [scheduling-1] c.m.e.u.Planfix: Planfix: getLaborRecords 2021-03-1 2021-03-23
+com.mtv.erp.service.HoursService 2021.03.23 01:00:37.064 DEBUG [scheduling-1] c.m.e.s.HoursService: Hours in Planfix: 208
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:37.064 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO get from date interval
+com.mtv.erp.mybatis.mappers.HoursMapper.getFromDate 2021.03.23 01:00:37.069 DEBUG [scheduling-1] c.m.e.m.m.H.getFromDate: ==>  Preparing: SELECT id, userId, date, hours, taskId, taskTitle, projectId, projectTitle FROM user_hours WHERE date BETWEEN ? AND ? AND NOT deleted = 1 ORDER BY date 
+com.mtv.erp.mybatis.mappers.HoursMapper.getFromDate 2021.03.23 01:00:37.070 DEBUG [scheduling-1] c.m.e.m.m.H.getFromDate: ==> Parameters: 2021-03-01(LocalDate), 2021-03-23(LocalDate)
+com.mtv.erp.mybatis.mappers.HoursMapper.getFromDate 2021.03.23 01:00:37.528 DEBUG [scheduling-1] c.m.e.m.m.H.getFromDate: <==      Total: 190
+com.mtv.erp.mybatis.daoimpl.UserDaoImpl 2021.03.23 01:00:37.537 DEBUG [scheduling-1] c.m.e.m.d.UserDaoImpl: DAO getAll
+com.mtv.erp.mybatis.mappers.UserMapper.getAll 2021.03.23 01:00:37.539 DEBUG [scheduling-1] c.m.e.m.m.U.getAll: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE NOT deleted = 1 ORDER BY lastname 
+com.mtv.erp.mybatis.mappers.UserMapper.getAll 2021.03.23 01:00:37.539 DEBUG [scheduling-1] c.m.e.m.m.U.getAll: ==> Parameters: 
+com.mtv.erp.mybatis.mappers.UserMapper.getAll 2021.03.23 01:00:37.542 DEBUG [scheduling-1] c.m.e.m.m.U.getAll: <==      Total: 40
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.561 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.562 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.563 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.564 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.564 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.565 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.565 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.566 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.567 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.568 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.569 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.570 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.572 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.572 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.573 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.574 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.574 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.575 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.576 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.576 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258404(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.576 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.577 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.577 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.578 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.578 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.579 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.579 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.580 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.580 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.581 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.582 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.583 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.584 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.585 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.585 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.587 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.589 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.589 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.590 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.591 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.591 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258404(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.591 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.592 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.592 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.593 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.594 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.595 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.595 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.597 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.597 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.598 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.598 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.599 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.599 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.600 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.600 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.601 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.602 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.602 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.603 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.603 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.604 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.604 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.605 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.605 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.606 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.607 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.607 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.608 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.608 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.609 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257954(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.609 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.610 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.610 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257954(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.610 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.611 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.611 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257954(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.612 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.615 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.615 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.616 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.617 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.617 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258404(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.617 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.618 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.618 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.619 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.619 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.619 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.620 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.621 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.621 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.621 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.622 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.622 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.623 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.623 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.623 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.624 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.624 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.624 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.625 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.625 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.626 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.626 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.627 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.627 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.628 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.629 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.629 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.630 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.630 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.631 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.631 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.631 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.632 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.632 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.633 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.633 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.634 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.635 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.635 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.635 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.636 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.636 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.637 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.637 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.637 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.638 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.638 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.638 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.639 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.639 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.639 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.640 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.640 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.640 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.641 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.641 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.641 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.642 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.642 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.643 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.643 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.644 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.644 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.644 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.645 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.645 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.645 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.646 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.646 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.646 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.647 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.647 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.647 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.648 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.648 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.648 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.649 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.649 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257954(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.650 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.650 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.650 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257954(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.651 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.651 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.652 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.652 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.653 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.653 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.653 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.654 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.654 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.654 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.655 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.655 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.656 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.656 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.656 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.657 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.657 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.658 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.658 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.659 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.659 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.659 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.660 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.660 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.660 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.661 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.661 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.662 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.662 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.663 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.663 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.664 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.664 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.665 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.666 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.666 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.666 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.667 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.667 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.667 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.668 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.668 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.668 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.669 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.669 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.670 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.670 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.670 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.671 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.671 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.671 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258404(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.672 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.672 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.673 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258404(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.673 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.674 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.674 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258404(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.675 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.675 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.675 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.676 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.676 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.677 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.677 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.678 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.678 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.679 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.679 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.680 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258404(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.680 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.681 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.681 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.681 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.682 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.682 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257954(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.683 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.684 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.685 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257954(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.685 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.686 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.687 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257954(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.687 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.688 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.688 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.689 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.690 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.690 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.690 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.691 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.691 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.691 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.692 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.693 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.693 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.694 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.694 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.695 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.695 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.695 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.696 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.697 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.697 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.698 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.698 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.698 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.699 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.700 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.700 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.701 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.702 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.702 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.702 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.703 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.703 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.704 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.704 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.704 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.705 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.705 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.705 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.706 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.707 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.707 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.707 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.708 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.708 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.709 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.709 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.709 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.710 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.710 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.711 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.711 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.712 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.712 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.713 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.714 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.714 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258404(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.715 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.716 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.716 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.717 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.718 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.718 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.719 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.720 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.720 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.721 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.722 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.722 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.723 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.723 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.724 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.724 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.725 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.725 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.726 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.726 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.727 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.727 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.729 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.729 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.730 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.730 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.731 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.731 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.732 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.733 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.734 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.735 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.735 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.736 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.737 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.737 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.738 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.739 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.739 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.739 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.740 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.740 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.741 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.742 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.742 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.742 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.743 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.743 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.744 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.744 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.745 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.745 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.746 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.746 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.747 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.748 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.749 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.750 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.753 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.753 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.754 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.755 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.755 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.756 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.759 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.760 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.771 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.772 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.773 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258444(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.773 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.774 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.774 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258444(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.775 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.776 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.776 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258444(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.784 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.786 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.787 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258444(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.788 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.789 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.789 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258444(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.790 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.791 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.791 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258444(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.792 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.793 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.794 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258444(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.794 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.797 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.797 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258444(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.798 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.800 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.800 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258444(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.801 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.802 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.802 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258444(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.803 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.803 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.804 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258444(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.804 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.805 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.805 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.806 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.806 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.807 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.808 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.809 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.809 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.811 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.812 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.812 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.813 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.814 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.814 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.815 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.816 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.816 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.817 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.818 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.818 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.818 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.819 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.819 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.819 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.820 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.820 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.821 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.821 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.821 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.822 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.823 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.824 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.824 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.825 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.825 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.826 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.826 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.826 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.827 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.828 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.828 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.829 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.830 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.830 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257950(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.830 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.831 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.831 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.832 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.832 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.833 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.834 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.835 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.835 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.835 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.836 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.836 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257954(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.840 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.841 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.842 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257954(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.842 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.844 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.844 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257954(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.845 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.846 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.846 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257954(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.847 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.848 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.848 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.849 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.851 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.851 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258450(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.860 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.861 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.861 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258450(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.863 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.863 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.864 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258450(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.864 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.865 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.865 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258450(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.866 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.868 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.869 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258450(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.869 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.870 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.870 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258450(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.871 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.872 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.872 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258450(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.872 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.875 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.875 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258404(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.876 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.877 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.877 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258404(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.878 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.879 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.879 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258046(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.880 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.881 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.881 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.882 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.882 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.882 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.884 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.885 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.885 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.886 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.887 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.887 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.888 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.889 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.889 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258042(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.893 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.898 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.898 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.899 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.900 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.901 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.901 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.902 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.902 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.903 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.903 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.903 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258150(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.904 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.904 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.905 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258404(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.905 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.906 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.906 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258450(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.907 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.907 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.907 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257956(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.908 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.909 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.909 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257958(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.909 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.910 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.910 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258148(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.911 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.912 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.912 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258148(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.913 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.914 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.914 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258044(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.914 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.915 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.916 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.916 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.917 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.917 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.918 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.919 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.919 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.919 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.921 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.921 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6258450(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.922 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.927 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.928 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.932 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.934 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.934 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257960(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.935 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.936 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==>  Preparing: SELECT id, firstname, lastname, email FROM user WHERE id = ? AND NOT deleted = 1 
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.936 DEBUG [scheduling-1] c.m.e.m.m.U.getById: ==> Parameters: 6257952(Integer)
+com.mtv.erp.mybatis.mappers.UserMapper.getById 2021.03.23 01:00:37.938 DEBUG [scheduling-1] c.m.e.m.m.U.getById: <==      Total: 1
+com.mtv.erp.service.HoursService 2021.03.23 01:00:37.947 DEBUG [scheduling-1] c.m.e.s.HoursService: UserHours add: 7
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:37.947 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO insert all
+com.mtv.erp.mybatis.mappers.HoursMapper.insertAll 2021.03.23 01:00:38.302 DEBUG [scheduling-1] c.m.e.m.m.H.insertAll: ==>  Preparing: INSERT INTO user_hours (userId, date, hours, taskId, taskTitle, projectId, projectTitle) VALUES (?, ?, ?, ?, ?, ?, ?) , (?, ?, ?, ?, ?, ?, ?) , (?, ?, ?, ?, ?, ?, ?) , (?, ?, ?, ?, ?, ?, ?) , (?, ?, ?, ?, ?, ?, ?) , (?, ?, ?, ?, ?, ?, ?) , (?, ?, ?, ?, ?, ?, ?) 
+com.mtv.erp.mybatis.mappers.HoursMapper.insertAll 2021.03.23 01:00:38.305 DEBUG [scheduling-1] c.m.e.m.m.H.insertAll: ==> Parameters: 6257956(Integer), 2021-03-19(LocalDate), 8.0(Float), 22523846(Integer), Доработка ППО АСУ НС 120-3(String), 724614(Integer), АС00-265 Доработка ППО АСУ НС 120-3 в г.Самара(String), 6257950(Integer), 2021-03-18(LocalDate), 8.0(Float), 22526476(Integer), ПО ПЛК: конфигурация оборудования, добавление сигналов ввода вывода, добавление ПИД-регуляторов, изучение существующей программы, интеграция новых блоков в сущ. проект(String), 724470(Integer), АС00-212 Замена модулей Eurotherm на Siemens(String), 6257950(Integer), 2021-03-19(LocalDate), 8.0(Float), 22526476(Integer), ПО ПЛК: конфигурация оборудования, добавление сигналов ввода вывода, добавление ПИД-регуляторов, изучение существующей программы, интеграция новых блоков в сущ. проект(String), 724470(Integer), АС00-212 Замена модулей Eurotherm на Siemens(String), 6257958(Integer), 2021-03-22(LocalDate), 8.0(Float), 22517576(Integer), WinCC OA. Разработать типовой шаблон проекта(String), 724230(Integer), 3333-1 ИПР отдела ОПиСИ(String), 6258044(Integer), 2021-03-22(LocalDate), 8.0(Float), 22526370(Integer), Разработать ОТР(String), 724428(Integer), АС00-107 АСУ слива сырья -2, ВФ(String), 6258150(Integer), 2021-03-22(LocalDate), 8.0(Float), 22526100(Integer), ОП: Проектирование - перечень Основных Элементов для заказа(String), 724588(Integer), АС00-177  Модернизация форфасного отделения - Казань - AB InBev Efes(String), 6258150(Integer), 2021-03-19(LocalDate), 8.0(Float), 22526100(Integer), ОП: Проектирование - перечень Основных Элементов для заказа(String), 724588(Integer), АС00-177  Модернизация форфасного отделения - Казань - AB InBev Efes(String)
+com.mtv.erp.mybatis.mappers.HoursMapper.insertAll 2021.03.23 01:00:38.309 DEBUG [scheduling-1] c.m.e.m.m.H.insertAll: <==    Updates: 7
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.402 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO insert all
+com.mtv.erp.mybatis.mappers.HoursMapper.insertAllHours 2021.03.23 01:00:38.405 DEBUG [scheduling-1] c.m.e.m.m.H.insertAllHours: ==>  Preparing: INSERT INTO hours (id, userId, date, hours) VALUES (?, ?, ?, ?) , (?, ?, ?, ?) , (?, ?, ?, ?) , (?, ?, ?, ?) , (?, ?, ?, ?) , (?, ?, ?, ?) , (?, ?, ?, ?) 
+com.mtv.erp.mybatis.mappers.HoursMapper.insertAllHours 2021.03.23 01:00:38.407 DEBUG [scheduling-1] c.m.e.m.m.H.insertAllHours: ==> Parameters: 191(Integer), 6257956(Integer), 2021-03-19(LocalDate), 8.0(Float), 192(Integer), 6257950(Integer), 2021-03-18(LocalDate), 8.0(Float), 193(Integer), 6257950(Integer), 2021-03-19(LocalDate), 8.0(Float), 194(Integer), 6257958(Integer), 2021-03-22(LocalDate), 8.0(Float), 195(Integer), 6258044(Integer), 2021-03-22(LocalDate), 8.0(Float), 196(Integer), 6258150(Integer), 2021-03-22(LocalDate), 8.0(Float), 197(Integer), 6258150(Integer), 2021-03-19(LocalDate), 8.0(Float)
+com.mtv.erp.mybatis.mappers.HoursMapper.insertAllHours 2021.03.23 01:00:38.414 DEBUG [scheduling-1] c.m.e.m.m.H.insertAllHours: <==    Updates: 7
+com.mtv.erp.service.HoursService 2021.03.23 01:00:38.458 DEBUG [scheduling-1] c.m.e.s.HoursService: UserHours update: 6
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.458 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO update user_hours
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.459 DEBUG [scheduling-1] c.m.e.m.m.H.update: ==>  Preparing: UPDATE user_hours SET hours = ? WHERE id = ? 
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.460 DEBUG [scheduling-1] c.m.e.m.m.H.update: ==> Parameters: 9.666667(Float), 159(Integer)
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.460 DEBUG [scheduling-1] c.m.e.m.m.H.update: <==    Updates: 1
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.503 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO update user_hours
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.504 DEBUG [scheduling-1] c.m.e.m.m.H.update: ==>  Preparing: UPDATE user_hours SET hours = ? WHERE id = ? 
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.505 DEBUG [scheduling-1] c.m.e.m.m.H.update: ==> Parameters: 9.166667(Float), 160(Integer)
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.505 DEBUG [scheduling-1] c.m.e.m.m.H.update: <==    Updates: 1
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.635 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO update user_hours
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.636 DEBUG [scheduling-1] c.m.e.m.m.H.update: ==>  Preparing: UPDATE user_hours SET hours = ? WHERE id = ? 
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.636 DEBUG [scheduling-1] c.m.e.m.m.H.update: ==> Parameters: 9.166667(Float), 161(Integer)
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.636 DEBUG [scheduling-1] c.m.e.m.m.H.update: <==    Updates: 1
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.722 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO update user_hours
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.723 DEBUG [scheduling-1] c.m.e.m.m.H.update: ==>  Preparing: UPDATE user_hours SET hours = ? WHERE id = ? 
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.723 DEBUG [scheduling-1] c.m.e.m.m.H.update: ==> Parameters: 9.083333(Float), 163(Integer)
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.733 DEBUG [scheduling-1] c.m.e.m.m.H.update: <==    Updates: 1
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.817 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO update user_hours
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.818 DEBUG [scheduling-1] c.m.e.m.m.H.update: ==>  Preparing: UPDATE user_hours SET hours = ? WHERE id = ? 
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.818 DEBUG [scheduling-1] c.m.e.m.m.H.update: ==> Parameters: 9.166667(Float), 164(Integer)
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.819 DEBUG [scheduling-1] c.m.e.m.m.H.update: <==    Updates: 1
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.865 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO update user_hours
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.866 DEBUG [scheduling-1] c.m.e.m.m.H.update: ==>  Preparing: UPDATE user_hours SET hours = ? WHERE id = ? 
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.866 DEBUG [scheduling-1] c.m.e.m.m.H.update: ==> Parameters: 9.333333(Float), 187(Integer)
+com.mtv.erp.mybatis.mappers.HoursMapper.update 2021.03.23 01:00:38.867 DEBUG [scheduling-1] c.m.e.m.m.H.update: <==    Updates: 1
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.912 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO update hours
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.913 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: ==>  Preparing: UPDATE hours SET hours = ? WHERE id = ? AND saved = 0 
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.913 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: ==> Parameters: 9.666667(Float), 159(Integer)
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.913 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: <==    Updates: 0
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.914 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO update hours
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.915 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: ==>  Preparing: UPDATE hours SET hours = ? WHERE id = ? AND saved = 0 
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.915 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: ==> Parameters: 9.166667(Float), 160(Integer)
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.915 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: <==    Updates: 0
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.915 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO update hours
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.916 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: ==>  Preparing: UPDATE hours SET hours = ? WHERE id = ? AND saved = 0 
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.917 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: ==> Parameters: 9.166667(Float), 161(Integer)
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.917 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: <==    Updates: 0
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.918 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO update hours
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.919 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: ==>  Preparing: UPDATE hours SET hours = ? WHERE id = ? AND saved = 0 
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.919 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: ==> Parameters: 9.083333(Float), 163(Integer)
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.919 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: <==    Updates: 0
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.920 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO update hours
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.921 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: ==>  Preparing: UPDATE hours SET hours = ? WHERE id = ? AND saved = 0 
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.921 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: ==> Parameters: 9.166667(Float), 164(Integer)
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.922 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: <==    Updates: 0
+com.mtv.erp.mybatis.daoimpl.HoursDaoImpl 2021.03.23 01:00:38.922 DEBUG [scheduling-1] c.m.e.m.d.HoursDaoImpl: DAO update hours
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.923 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: ==>  Preparing: UPDATE hours SET hours = ? WHERE id = ? AND saved = 0 
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.924 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: ==> Parameters: 9.333333(Float), 187(Integer)
+com.mtv.erp.mybatis.mappers.HoursMapper.updateHours 2021.03.23 01:00:38.924 DEBUG [scheduling-1] c.m.e.m.m.H.updateHours: <==    Updates: 0
+com.mtv.erp.service.HoursService 2021.03.23 01:00:38.924 DEBUG [scheduling-1] c.m.e.s.HoursService: UserHours delete: 0
