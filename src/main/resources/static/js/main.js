@@ -6,7 +6,7 @@ for (let i = 0; i < inputs.length; i++) {
     inputs[i].value = (inputs[i].value == Math.round(inputs[i].value)) ? Math.round(inputs[i].value) : inputs[i].value;
     inputs[i].type = "text";
     typeDay = inputs[i].parentNode.children[3];
-    colorType(Element, typeDay);
+    colorType(inputs[i], typeDay);
 }
 
 for (let i = 0; i < sums.length; i++) {
@@ -29,7 +29,7 @@ function ChangeColor(Element) {
 }
 
 function colorType(Element, typeDay) {
-    console.log(Element);
+    console.log(Element.value);
     console.log(typeDay.value);
     if (typeDay.value == 1) {
         Element.style = "background-color:" + "#FFF" + "; color: #000;";
@@ -43,7 +43,7 @@ function colorType(Element, typeDay) {
         Element.value = "ОТ";
     } else if (typeDay.value == 5) {
         Element.style = "background-color:" + "#BED7EB" + "; color: #00000000;";
-        Element.value = "";
+        Element.value = "0";
     } else if (typeDay.value == 6) {
         Element.style = "background-color:" + "#F9D1C5" + "; color: #000;";
         Element.value = "ДО";
@@ -74,4 +74,4 @@ function colorType(Element, typeDay) {
         $.get(url, function (fragment) { // get from controller
             $("#table-hours").replaceWith(fragment); // update snippet of page
         });
-    }
+}
