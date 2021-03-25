@@ -6,11 +6,7 @@ for (let i = 0; i < inputs.length; i++) {
     inputs[i].value = (inputs[i].value == Math.round(inputs[i].value)) ? Math.round(inputs[i].value) : inputs[i].value;
     inputs[i].type = "text";
     typeDay = inputs[i].parentNode.children[3];
-    if (inputs[i].value == '0') {
-        inputs[i].style = "background-color: " + colorType(inputs[i], typeDay) + "; " + "color: rgba(0, 0, 0, 0);";
-    } else {
-        inputs[i].style = "background-color: " + colorType(inputs[i], typeDay) + "; " + "color: rgba(0, 0, 0);";
-    }
+    colorType(Element, typeDay);
 }
 
 for (let i = 0; i < sums.length; i++) {
@@ -24,62 +20,58 @@ for (let i = 0; i < save.length; i++) {
 
 function ChangeColor(Element) {
     let type = document.getElementById('typeDay');
-    let hours = document.getElementById('hours');
     let check = document.getElementById('check');
     let typeDay = Element.parentNode.children[3];
-    let count;
-    let fcolor;
-    count = hours.value;
-    if (count == 0) {
-        fcolor = "color: rgba(0, 0, 0, 0)";
-    } else {
-        fcolor = "color: rgba(0, 0, 0)";
-    }
     if (check.checked) {
         typeDay.value = type.value;
-        Element.style = "background-color:" + colorType(Element, typeDay) + "; color: " + fcolor + ";";
-        Element.value = count;
+        colorType(Element, typeDay);
     }
 }
 
-function colorType(Element, typeDay){
+function colorType(Element, typeDay) {
     console.log(Element);
-    let color;
     console.log(typeDay.value);
-    if (typeDay.value == 1)
-        color = "#FFF";
-    else if (typeDay.value == 2)
-        color = "#FF0";
-    else if (typeDay.value == 3)
-        color = "#8DD452";
-    else if (typeDay.value == 4)
-        color = "#03AE48";
-    else if (typeDay.value == 5)
-        color = "#BED7EB";
-    else if (typeDay.value == 6)
-        color = "#F9D1C5";
-    else if (typeDay.value == 7)
-        color = "#DEC8EE";
-    else if (typeDay.value == 8)
-        color = "#FFF";
-    else if (typeDay.value == 9)
-        color = "#D5DADE";
-    else if (typeDay.value == 10)
-        color = "#F565F8";
-    else if (typeDay.value == 11)
-        color = "#FFBF01";
-    else if (typeDay.value == 12)
-        color = "#BD0000";
-    return color;
-    Element.style = "background-color: " + color + ";";
-    console.log(Element.style);
+    if (typeDay.value == 1) {
+        Element.style = "background-color:" + "#FFF" + "; color: #000;";
+    } else if (typeDay.value == 2) {
+        Element.style = "background-color:" + "#FF0" + "; color: #000;";
+    } else if (typeDay.value == 3) {
+        Element.style = "background-color:" + "#8DD452" + "; color: #000;";
+        Element.value = "ОТ";
+    } else if (typeDay.value == 4) {
+        Element.style = "background-color:" + "#03AE48" + "; color: #000;";
+        Element.value = "ОТ";
+    } else if (typeDay.value == 5) {
+        Element.style = "background-color:" + "#BED7EB" + "; color: #00000000;";
+        Element.value = "";
+    } else if (typeDay.value == 6) {
+        Element.style = "background-color:" + "#F9D1C5" + "; color: #000;";
+        Element.value = "ДО";
+    } else if (typeDay.value == 7) {
+        Element.style = "background-color:" + "#DEC8EE" + "; color: #000;";
+        Element.value = "Б";
+    } else if (typeDay.value == 8) {
+        Element.style = "background-color:" + "#FFF" + "; color: #00000000;";
+        Element.value = "";
+    } else if (typeDay.value == 9) {
+        Element.style = "background-color:" + "#D5DADE" + "; color: #00000000;";
+        Element.value = "";
+    } else if (typeDay.value == 10) {
+        Element.style = "background-color:" + "#F565F8" + "; color: #000;";
+        Element.value = "OВ";
+    } else if (typeDay.value == 11) {
+        Element.style = "background-color:" + "#FFBF01" + "; color: #000;";
+    } else if (typeDay.value == 12) {
+        Element.style = "background-color:" + "#BD0000" + "; color: #000;";
+        Element.value = "РВ";
+    }
 }
 
-function updateTable() {
-    var month = $("#monthInt").val();
-    var year = $("#yearInt").val();
-    var url = "../hours/" + month + "-" + year;
-    $.get(url, function (fragment) { // get from controller
-        $("#table-hours").replaceWith(fragment); // update snippet of page
-    });
-}
+    function updateTable() {
+        var month = $("#monthInt").val();
+        var year = $("#yearInt").val();
+        var url = "../hours/" + month + "-" + year;
+        $.get(url, function (fragment) { // get from controller
+            $("#table-hours").replaceWith(fragment); // update snippet of page
+        });
+    }
